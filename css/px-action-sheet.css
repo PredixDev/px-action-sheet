@@ -1,20 +1,32 @@
-* {
-  -webkit-tap-highlight-color: transparent; }
+/*
+@usage
 
-.action-dialog--mask {
-  transition: all 0.2s;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
-  opacity: 0; }
-  .action-dialog--mask--is-open {
-    z-index: 5;
-    opacity: 1;
-    visibility: visible; }
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+  @include colors($value-map...);
+}
+*/
+.action-dialog {
+  -webkit-tap-highlight-color: transparent; }
+  .action-dialog--mask {
+    transition: all 0.2s;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+    opacity: 0; }
+    .action-dialog--mask--is-open {
+      z-index: 5;
+      opacity: 1;
+      visibility: visible; }
 
 .action-sheet {
   -webkit-user-select: none;
@@ -52,7 +64,7 @@
     .action-sheet__actions button,
     .action-sheet__actions px-action-sheet-button {
       width: 100%;
-      color: #177efb; }
+      color: #111; }
       .action-sheet__actions > *:active,
       .action-sheet__actions button:active,
       .action-sheet__actions px-action-sheet-button:active {
@@ -71,7 +83,7 @@
     box-shadow: none;
     border: none !important;
     background: #fff;
-    color: #177efb;
+    color: #111;
     border-bottom: 1px solid #ccc !important;
     display: block;
     font-size: 1.2rem;
@@ -102,6 +114,6 @@
     .action-sheet__button--cancel {
       margin-top: 8px; }
     .action-sheet__button--info {
-      color: #ccc !important;
+      color: #fff !important;
       font-size: 0.9rem;
       padding: 20px 12px; }

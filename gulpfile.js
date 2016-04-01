@@ -3,6 +3,34 @@ const gulp = require('gulp');
 const pkg = require('./package.json');
 const $ = require('gulp-load-plugins')();
 const gulpSequence = require('gulp-sequence');
+const sassdoc = require('sassdoc');
+const importOnce = require('node-sass-import-once');
+
+const sassdocOptions = {
+  dest: 'docs',
+  verbose: true,
+  display: {
+    access: ['public', 'private'],
+    alias: true,
+    watermark: true,
+  },
+  groups: {
+    'undefined': 'Ungrouped'
+  }
+};
+
+const sassOptions = {
+  importer: importOnce,
+  importOnce: {
+    index: true,
+    bower: true
+  }
+};
+
+gulp.task('sassdoc', function () {
+  return gulp.src('sass/**/*.scss')
+    .pipe(sassdoc(sassdocOptions));
+});
 
 gulp.task('clean', function () {
   return gulp.src(['.tmp', 'css'], {
@@ -12,7 +40,7 @@ gulp.task('clean', function () {
 
 gulp.task('sass', function () {
   return gulp.src('./sass/**/*.scss')
-    .pipe($.sass.sync().on('error', $.sass.logError))
+    .pipe($.sass(sassOptions).on('error', $.sass.logError))
     .pipe($.size())
     .pipe(gulp.dest('./css'));
 });
@@ -49,4 +77,4 @@ gulp.task('autoprefixer:watch', function () {
 });
 
 gulp.task('watch', ['sass:watch', 'autoprefixer:watch']);
-gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css'));
+gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css', 'sassdoc'));

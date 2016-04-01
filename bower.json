@@ -23,9 +23,11 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "*",
+    "polymer": "latest"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#~1.0.5"
+    "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
+    "px-mobile-mixin-designs": "https://github.build.ge.com/PredixComponents/px-mobile-mixin-designs.git",
+    "px-example": "https://github.build.ge.com/PredixComponents/px-example.git"
   }
 }
