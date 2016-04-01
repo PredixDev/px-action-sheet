@@ -1,3 +1,4 @@
+
 <link rel="import" href="../polymer/polymer.html" />
 <link rel="import" href="px-action-sheet-button.html" />
 <!--
@@ -42,6 +43,11 @@ To use this element:
           value: false
         }
       },
+
+      created: function(){
+
+      },
+
       //I handle invoking the toggleHandler when the value changes.
       _isOpenHandler: function(newVal, oldVal) {
         console.log('_isOpenHandler', 'newVal', newVal);

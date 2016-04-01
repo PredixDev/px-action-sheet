@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title>px-action-sheet demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../polymer/polymer.html">
+  <link rel='stylesheet prefetch' href='http://predixdev.github.io/px-library-design/css/style.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
+
+
+  <!-- TODO: pxm components -->
+  <link rel="import" href="px-action-sheet.html">
+
+  <style media="screen">
+    body {
+      padding: 5px;
+      background: #eee;
+    }
+  </style>
+  <script src="../fastclick/lib/fastclick.js"></script>
+  <script type="text/javascript">
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+      }, false);
+    }
+  </script>
+</head>
+
+<body>
+
+  <button class="btn--large btn btn--full u-mb+" type="button" onclick="document.getElementById('actionsheet1').toggle()">Toggle Action Sheet</button>
+  <px-action-sheet id="actionsheet1">
+    <px-action-sheet-button label="Item 1"></px-action-sheet-button>
+    <px-action-sheet-button label="Item 2"></px-action-sheet-button>
+    <px-action-sheet-button label="Item 3"></px-action-sheet-button>
+    <px-action-sheet-button label="Cancel" type="cancel" onclick="actionsheet1.toggle();"></px-action-sheet-button>
+  </px-action-sheet>
+</body>
+
+</html>

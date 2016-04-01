@@ -10,7 +10,7 @@
 @import 'px-mobile-mixin-designs/_mixins';
 
 /// Button font color
-$action-sheet-button-font-color: #111;
+$action-sheet-button-font-color: #177efb;
 
 /// Button border color
 $action-sheet-button-border-color: #ccc;
@@ -34,10 +34,10 @@ $action-sheet-delete-button-font-color: #FE3F35;
 $action-sheet-delete-button-background-color: #FE3F35;
 
 /// Label button font color
-$action-sheet-label-button-font-color: #ccc;
+$action-sheet-label-button-font-color: #777;
 
 /// Label button background color
-$action-sheet-label-button-font-color: #fff;
+$action-sheet-label-button-background-color: #fff;
 
 
 /// The action dialog component.
@@ -46,7 +46,7 @@ $action-sheet-label-button-font-color: #fff;
 ///		//Action Sheet Here
 ///	</div>
 .action-dialog {
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
 
 	/// The overlay that is behind the action sheet.
 	///@example html
@@ -61,6 +61,7 @@ $action-sheet-label-button-font-color: #fff;
     background: rgba(0,0,0,0.4);
     z-index: 0;
     opacity: 0;
+		visibility: hidden;
 
 		/// The overlays visible state.
 		///@example html
@@ -73,10 +74,6 @@ $action-sheet-label-button-font-color: #fff;
   }
 }
 
-/// The action sheet component.
-///@example html
-///		<div class="action-sheet">
-///		</div>
 .action-sheet {
   user-select: none;
   padding: 0;
@@ -90,62 +87,32 @@ $action-sheet-label-button-font-color: #fff;
   bottom: 2%;
   transform: translateY(115%);
 
-	/// The action sheet visible state.
-	///@example html
-	///		<div class="action-sheet action-sheet--is-open">
-	///		</div>
   @include modifier('is-open') {
     z-index: 10;
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
-
-	/// The container that holds the action buttons
-	/// @example html
-	/// 	<div class="action-sheet__actions">
-	/// 		Action Buttons Here
-	///		</div>
   @include element('actions') {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    > *,
-    button,
-    px-action-sheet-button {
-      width: 100%;
-      //background:$action-sheet-button-background-color;
-      color: $action-sheet-button-font-color;
-      &:first-child {
-     //   border-top-left-radius: $action-sheet-button-radius !important;
-     //   border-top-right-radius: $action-sheet-button-radius !important;
-      }
-      &:active {
-        transition: none;
-        opacity: 0.8;
-      }
-      &:disabled,
-      &[disabled] {
-        opacity: 0.5;
-        cursor: default;
-        pointer-events: none;
-      }
+
+		> px-action-sheet-button {
+			//@include actionButton(#fff);
+			//border-bottom: 1px solid $action-sheet-button-border-color !important;
+			&:last-child{
+				border-bottom: none !important;
+			}
     }
   }
 
-	/// The action button styles.
-	/// @example html
-	///		<button class="action-sheet__button action-sheet__button--info">This is a two line note to clarify a destructive action you are about to take.</button>
-	///		<button class="action-sheet__button action-sheet__button--danger">Delete</button>
-	///		<button class="action-sheet__button action-sheet__button--cancel">Cancel</button>
   @include element('button') {
+		@include actionButton(#fff);
     background: transparent;
     box-shadow: none;
     border: none !important;
-  //  border-radius: $action-sheet-button-radius;
-    background: $action-sheet-button-background-color;
     color: $action-sheet-button-font-color;
-    border-bottom: 1px solid $action-sheet-button-border-color !important;
     display: block;
     font-size: 1.2rem;
     text-align: center;
@@ -154,53 +121,37 @@ $action-sheet-label-button-font-color: #fff;
     padding: 12px 0;
     user-select: none;
     width: 100%;
-    &:active {
-      transition: none;
-      opacity: 0.8;
-    }
-    &:disabled,
-    &[disabled] {
-      opacity: 0.5;
-      cursor: default;
-      pointer-events: none;
-    }
-    &:focus {
-      outline: 0;
-      transition: none;
-    }
-    &:hover {
-      box-shadow: none;
-      transition: none;
-    }
+		cursor: pointer;
+		outline: none;
+
+		border-bottom: 1px solid $action-sheet-button-border-color !important;
+
+		&:last-of-type{
+
+		}
 
 		/// The danger action button styles.
-		/// @example html
-		///		<button class="action-sheet__button action-sheet__button--danger">Delete</button>
     @include modifier('danger') {
       color: $action-sheet-delete-button-font-color !important;
-    //  border-radius: $action-sheet-button-radius;
-    //  border-top-left-radius: 0 !important;
-    //  border-top-right-radius: 0 !important;
+			border-bottom: none !important;
     }
 
 		/// The cancel action button styles.
-		/// @example html
-		///		<button class="action-sheet__button action-sheet__button--cancel">Cancel</button>
     @include modifier('cancel') {
-      margin-top: 8px;
-    //  border-radius: $action-sheet-button-radius !important;
+			margin-top: 10px;
+			border-bottom: none !important;
     }
 
 		/// The info action button styles.
-		/// @example html
-		///		<button class="action-sheet__button action-sheet__button--info">This is a two line note to clarify a destructive action you are about to take.</button>
     @include modifier('info') {
-		//	border-radius: $action-sheet-button-radius;
-     // border-bottom-left-radius: 0 !important;
-    //  border-bottom-right-radius: 0 !important;
       color: $action-sheet-label-button-font-color !important;
-      font-size: 0.9rem;
+      font-size: 1rem;
       padding: 20px 12px;
+			pointer-events: none;
+			&:active {
+        transition: none;
+        opacity: 1;
+      }
     }
   }
 }

@@ -57,10 +57,10 @@ gulp.task('autoprefixer', function () {
 
 gulp.task('css', function () {
   return gulp.src('css/**/*.css')
-    .pipe($.sourcemaps.init())
+    //  .pipe($.sourcemaps.init())
     .pipe($.cssmin())
     .pipe($.concat(pkg.name + '.css'))
-    .pipe($.sourcemaps.write('.'))
+    //  .pipe($.sourcemaps.write('.'))
     .pipe($.rename({
       suffix: '.min'
     }))
@@ -69,12 +69,12 @@ gulp.task('css', function () {
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('./sass/**/*.scss', ['default']);
 });
 
 gulp.task('autoprefixer:watch', function () {
   gulp.watch('./css/**/*.css', ['autoprefixer']);
 });
 
-gulp.task('watch', ['sass:watch', 'autoprefixer:watch']);
+gulp.task('watch', ['sass:watch']);
 gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css', 'sassdoc'));

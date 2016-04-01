@@ -48,12 +48,22 @@
       overflow: hidden;
     }
   </style>
+  <script src="../fastclick/lib/fastclick.js"></script>
+  <script type="text/javascript">
+  if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body);
+      }, false);
+  }
+  </script>
+
 </head>
 
 <body>
 
   <h1>px-action-sheet</h1>
   <p>The px-action-sheet component is a responsive mobile action sheet.</p>
+
 
 
   <div class="box box--small u-mb++">
@@ -85,7 +95,5 @@
     </px-example>
   </div>
 
-
 </body>
-
 </html>

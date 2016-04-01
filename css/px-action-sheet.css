@@ -11,22 +11,21 @@ $value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
   @include colors($value-map...);
 }
 */
-.action-dialog {
-  -webkit-tap-highlight-color: transparent; }
-  .action-dialog--mask {
-    transition: all 0.2s;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 0;
-    opacity: 0; }
-    .action-dialog--mask--is-open {
-      z-index: 5;
-      opacity: 1;
-      visibility: visible; }
+.action-dialog--mask {
+  transition: all 0.2s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden; }
+  .action-dialog--mask--is-open {
+    z-index: 5;
+    opacity: 1;
+    visibility: visible; }
 
 .action-sheet {
   -webkit-user-select: none;
@@ -60,30 +59,15 @@ $value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between; }
-    .action-sheet__actions > *,
-    .action-sheet__actions button,
-    .action-sheet__actions px-action-sheet-button {
+    .action-sheet__actions > * {
       width: 100%;
-      color: #111; }
-      .action-sheet__actions > *:active,
-      .action-sheet__actions button:active,
-      .action-sheet__actions px-action-sheet-button:active {
-        transition: none;
-        opacity: 0.8; }
-      .action-sheet__actions > *:disabled, .action-sheet__actions > *[disabled],
-      .action-sheet__actions button:disabled,
-      .action-sheet__actions button[disabled],
-      .action-sheet__actions px-action-sheet-button:disabled,
-      .action-sheet__actions px-action-sheet-button[disabled] {
-        opacity: 0.5;
-        cursor: default;
-        pointer-events: none; }
+      -webkit-tap-highlight-color: transparent; }
   .action-sheet__button {
     background: transparent;
     box-shadow: none;
     border: none !important;
     background: #fff;
-    color: #111;
+    color: #177efb;
     border-bottom: 1px solid #ccc !important;
     display: block;
     font-size: 1.2rem;
@@ -95,7 +79,9 @@ $value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 100%; }
+    width: 100%;
+    cursor: pointer;
+    outline: none; }
     .action-sheet__button:active {
       transition: none;
       opacity: 0.8; }
@@ -109,11 +95,22 @@ $value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
     .action-sheet__button:hover {
       box-shadow: none;
       transition: none; }
+    .action-sheet__button:first-child {
+      border-top-left-radius: 8px !important;
+      border-top-right-radius: 8px !important; }
+    .action-sheet__button:last-child {
+      border-bottom: none !important; }
     .action-sheet__button--danger {
       color: #FE3F35 !important; }
     .action-sheet__button--cancel {
-      margin-top: 8px; }
+      margin-top: 8px;
+      border-radius: 8px !important;
+      border-bottom: none !important; }
     .action-sheet__button--info {
-      color: #fff !important;
-      font-size: 0.9rem;
-      padding: 20px 12px; }
+      color: #777 !important;
+      font-size: 1rem;
+      padding: 20px 12px;
+      pointer-events: none; }
+      .action-sheet__button--info:active {
+        transition: none;
+        opacity: 1; }

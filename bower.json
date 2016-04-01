@@ -23,7 +23,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "latest"
+    "polymer": "latest",
+    "fastclick": "~1.0.6"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
