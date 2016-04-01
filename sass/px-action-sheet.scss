@@ -11,127 +11,132 @@
 }
 
 /// Action Sheet Vars
-$red: #FE3F35;
-$blue: #177efb;
-$gray: #c7c7cc;
-$orange: #fd9427;
-$white: #fff;
-
-
 $action-sheet-button-font-color: #111;
 $action-sheet-button-border-color: #ccc;
 $action-sheet-button-radius: 8px;
 $action-sheet-button-font-color: #177efb;
 $action-sheet-button-background-color: #fff;
-$action-sheet-delete-button-font-color: #fff;
+$action-sheet-delete-button-font-color: #FE3F35;
 $action-sheet-delete-button-background-color: #FE3F35;
 $action-sheet-label-button-font-color: #ccc;
-
-*{
-	  -webkit-tap-highlight-color: rgba(0,0,0,0);
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-
-.action-sheet {
-	user-select: none;
-  padding: 0px;
-  border-radius: $action-sheet-button-radius;
-  z-index: 500;
-
-	position: absolute;
-	bottom: 2%;
-	left: 3%;
-	right: 3%;
-
-	@include element('actions'){
-		display:flex;
-		flex-direction: column;
-		justify-content: space-between;
-		> *,
-		px-action-sheet-button{
-			width:100%;
-			border-radius: 0px;
-			border-bottom: 1px solid $action-sheet-button-border-color !important;
-	 		background:$action-sheet-button-background-color;
-				&:active {
-					transition: none;
-					opacity: 0.8;
-				}
-				&:disabled, &[disabled] {
-					opacity: 0.5;
-					cursor: default;
-					pointer-events: none;
-				}
-		}
-	}
-
-	@include element('button'){
-		text-align: center;
-		outline:none;
-		box-shadow:none;
-		border: none !important;
-		width:100%;
-		margin: 0;
-		display:block;
-		background:transparent;
-		padding: 12px 0;
-		font-size: 1.2rem;
- 		color:$action-sheet-button-font-color;
-		font-weight:500;
-		user-select: none;
-		&:active {
-			transition: none;
-			opacity: 0.8;
-		}
-		&:disabled, &[disabled] {
-			opacity: 0.5;
-			cursor: default;
-			pointer-events: none;
-		}
-		&:focus {
-			outline: 0;
-			transition: none;
-		}
-		&:hover {
-			box-shadow: none;
-			transition: none;
-		}
-		&:first-child{
-			border-top-left-radius:$action-sheet-button-radius;
-			border-top-right-radius:$action-sheet-button-radius;
-			border-bottom-left-radius:0;
-			border-bottom-right-radius:0;
-		}
-		&:last-child{
-			//border-bottom-left-radius:$action-sheet-button-radius !important;
-			//border-bottom-right-radius:$action-sheet-button-radius;
-		}
-		@include modifier('delete'){
-			color:$action-sheet-delete-button-font-color;
-			border-radius: $action-sheet-button-radius;
-			border-top-left-radius:0;
-			border-top-right-radius:0;
-		}
-		@include modifier('cancel'){
-			margin-top:8px;
-			border-radius: $action-sheet-button-radius;
-			font-weight: 500;
-		}
-		@include modifier('label'){
-			color:$action-sheet-label-button-font-color;
-			font-size: .9rem;
-			padding: 20px 12px;
-		}
-	}
-}
-
-.action-dialog{
-	@include modifier('mask') {
+.action-dialog {
+  @include modifier('mask') {
+    transition: all 0.2s;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     background: rgba(0,0,0,0.4);
-    z-index: 5;
- }
+    z-index: 0;
+    opacity: 0;
+    @include modifier('is-open') {
+      z-index: 5;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+.action-sheet {
+  user-select: none;
+  padding: 0;
+  border-radius: $action-sheet-button-radius;
+  z-index: 500;
+  position: absolute;
+  bottom: -35%;
+  left: 3%;
+  right: 3%;
+  //visibility:hidden;
+  //opacity: 0;
+  transition: all 0.3s;
+  bottom: 2%;
+  transform: translateY(115%);
+  @include modifier('is-open') {
+    z-index: 10;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  @include element('actions') {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    > *,
+    button,
+    px-action-sheet-button {
+      width: 100%;
+      //background:$action-sheet-button-background-color;
+      color: $action-sheet-button-font-color;
+      &:first-child {
+     //   border-top-left-radius: $action-sheet-button-radius !important;
+     //   border-top-right-radius: $action-sheet-button-radius !important;
+      }
+      &:active {
+        transition: none;
+        opacity: 0.8;
+      }
+      &:disabled,
+      &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+  }
+  @include element('button') {
+    background: transparent;
+    box-shadow: none;
+    border: none !important;
+  //  border-radius: $action-sheet-button-radius;
+    background: $action-sheet-button-background-color;
+    color: $action-sheet-button-font-color;
+    border-bottom: 1px solid $action-sheet-button-border-color !important;
+    display: block;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0;
+    outline: none;
+    padding: 12px 0;
+    user-select: none;
+    width: 100%;
+    &:active {
+      transition: none;
+      opacity: 0.8;
+    }
+    &:disabled,
+    &[disabled] {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+    &:focus {
+      outline: 0;
+      transition: none;
+    }
+    &:hover {
+      box-shadow: none;
+      transition: none;
+    }
+    @include modifier('danger') {
+      color: $action-sheet-delete-button-font-color !important;
+    //  border-radius: $action-sheet-button-radius;
+    //  border-top-left-radius: 0 !important;
+    //  border-top-right-radius: 0 !important;
+    }
+    @include modifier('cancel') {
+      margin-top: 8px;
+    //  border-radius: $action-sheet-button-radius !important;
+    }
+    @include modifier('info') {
+		//	border-radius: $action-sheet-button-radius;
+     // border-bottom-left-radius: 0 !important;
+    //  border-bottom-right-radius: 0 !important;
+      color: $action-sheet-label-button-font-color !important;
+      font-size: 0.9rem;
+      padding: 20px 12px;
+    }
+  }
 }

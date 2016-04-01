@@ -1,4 +1,16 @@
-<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../polymer/polymer.html" />
+<!--
+To use this element:
+
+```
+<px-action-sheet-button label="Item 1"></px-action-sheet-button>
+```
+
+@element px-action-sheet-button.html
+@blurb px-action-sheet-button is a responsive button for the action sheet.
+@demo demo.html
+@homepage index.html
+-->
 <dom-module id="px-action-sheet-button">
   <style>
     :host {
@@ -6,20 +18,27 @@
       width: 100%;
     }
   </style>
-  <template>
+  <template strip-whitespace>
     <button class="action-sheet__button">{{label}}</button>
   </template>
   <script>
     Polymer({
       is: 'px-action-sheet-button',
       properties: {
+        //The label of the button.
         label: {
           type: String,
           value: 'Action Button'
+        },
+        //The type of action sheet button. (info, danger, close)
+        type: {
+          type: String
         }
       },
-      created: function(){
-        console.warn(this.tagName, 'created');
+      attached: function() {
+        if(this.type){
+          this.toggleClass('action-sheet__button--'+ this.type.toLowerCase(), true, this.children[0]);
+        }
       }
     });
   </script>

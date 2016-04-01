@@ -1,6 +1,21 @@
-<link rel="import" href="../polymer/polymer.html"/>
-<link rel="import" href="px-action-sheet-button.html"/>
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="px-action-sheet-button.html" />
+<!--
+To use this element:
 
+```
+<px-action-sheet id="actionsheet1">
+  <px-action-sheet-button label="Item 1"></px-action-sheet-button>
+  <px-action-sheet-button label="Item 2"></px-action-sheet-button>
+  <px-action-sheet-button label="Item 3"></px-action-sheet-button>
+</px-action-sheet>
+```
+
+@element px-action-sheet.html
+@blurb px-action-sheet is a responsive mobile first action sheet.
+@demo demo.html
+@homepage index.html
+-->
 <dom-module id="px-action-sheet">
   <link rel="stylesheet" href="css/px-action-sheet.min.css">
   <style>
@@ -8,27 +23,41 @@
       display: block;
     }
   </style>
-  <template>
-    <div class="action-dialog--mask"></div>
-  	<div class="action-dialog">
-  		<div class="action-sheet">
-  			<div class="action-sheet__actions">
-          <content></content>
-  			</div>
-  		</div>
-  	</div>
+  <template strip-whitespace>
+    <div id="_actionDialogMask" class="action-dialog--mask"></div>
+    <div id="_actionSheet" class="action-sheet">
+      <div id="_actionSheetActions" class="action-sheet__actions">
+        <content></content>
+      </div>
+    </div>
   </template>
   <script>
     Polymer({
       is: 'px-action-sheet',
       properties: {
-        title: {
-          type: String,
-          value: 'List Title'
+        //The current state of the action sheet.
+        isOpen: {
+          type: Boolean,
+          observer: '_isOpenHandler',
+          value: false
         }
       },
-      created: function(){
-        console.warn(this.tagName, 'created');
+      //I handle invoking the toggleHandler when the value changes.
+      _isOpenHandler: function(newVal, oldVal) {
+        console.log('_isOpenHandler', 'newVal', newVal);
+        console.log('_isOpenHandler', 'isOpen', this.isOpen);
+        this._toggleHandler();
+      },
+      //I handle toggling the visibility of the action sheet.
+      _toggleHandler: function(show) {
+        //this.$._actionDialogMask.hidden = !this.$._actionDialogMask.hidden;
+        //this.toggleClass('action-sheet--is-open', show || this.isOpen);
+        this.toggleClass('action-dialog--mask--is-open', show || this.isOpen, this.$._actionDialogMask);
+        this.toggleClass('action-sheet--is-open', show || this.isOpen, this.$._actionSheet);
+      },
+      //I handle toggling value of isOpen, which in turn toggles the visibility.
+      toggle: function() {
+        this.isOpen = !this.isOpen;
       }
     });
   </script>

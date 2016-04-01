@@ -35,6 +35,7 @@
 
     .position-relative {
       position: relative;
+      overflow: hidden;
     }
 
     .height-500 {
@@ -58,24 +59,27 @@
   <div class="box box--small u-mb++">
     <h2>Default</h2>
     <px-example>
+      <button class="btn--large btn btn--full u-mb+" type="button" onclick="document.getElementById('actionsheet1').toggle()">Toggle Action Sheet</button>
       <div class="position-relative height-500 u-mb">
-        <px-action-sheet id="tabbar1" theme="dark">
+        <px-action-sheet id="actionsheet1">
           <px-action-sheet-button label="Item 1"></px-action-sheet-button>
           <px-action-sheet-button label="Item 2"></px-action-sheet-button>
           <px-action-sheet-button label="Item 3"></px-action-sheet-button>
+          <px-action-sheet-button label="Cancel" type="cancel"></px-action-sheet-button>
         </px-action-sheet>
       </div>
     </px-example>
   </div>
 
   <div class="box box--small u-mb++">
-    <h2>Default with Buttons</h2>
+    <h2>Default with Destroy Action</h2>
     <px-example>
+      <button class="btn--large btn btn--full u-mb+" type="button" onclick="document.getElementById('actionsheet2').toggle()">Toggle Action Sheet</button>
       <div class="position-relative height-500 u-mb">
-        <px-action-sheet id="tabbar1" theme="dark">
-          <px-action-sheet-button label="Item 1"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 2"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 3"></px-action-sheet-button>
+        <px-action-sheet id="actionsheet2">
+          <px-action-sheet-button label="This is a two line note to clarify a destructive action you are about to take." type="info"></px-action-sheet-button>
+          <px-action-sheet-button label="Delete" type="danger"></px-action-sheet-button>
+          <px-action-sheet-button label="Cancel" type="cancel"></px-action-sheet-button>
         </px-action-sheet>
       </div>
     </px-example>

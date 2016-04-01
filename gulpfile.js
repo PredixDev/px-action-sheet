@@ -4,9 +4,6 @@ const pkg = require('./package.json');
 const $ = require('gulp-load-plugins')();
 const gulpSequence = require('gulp-sequence');
 
-const autoprefixer = require('gulp-autoprefixer');
-
-
 gulp.task('clean', function () {
   return gulp.src(['.tmp', 'css'], {
     read: false
@@ -50,8 +47,6 @@ gulp.task('sass:watch', function () {
 gulp.task('autoprefixer:watch', function () {
   gulp.watch('./css/**/*.css', ['autoprefixer']);
 });
-
-
 
 gulp.task('watch', ['sass:watch', 'autoprefixer:watch']);
 gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css'));
