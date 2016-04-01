@@ -1,0 +1,31 @@
+{
+  "name": "px-action-sheet",
+  "version": "0.0.1",
+  "authors": [
+    "Jonnie Spratley <jonnie.spratley@ge.com>"
+  ],
+  "description": "A web component for a list",
+  "repository": {
+    "type": "git",
+    "url": "https://github.build.ge.com/PredixComponents/px-action-sheet.git"
+  },
+  "main": "px-action-sheet.html",
+  "keywords": [
+    "px",
+    "px-mobile"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "*",
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#~1.0.5"
+  }
+}

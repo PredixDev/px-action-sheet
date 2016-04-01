@@ -1,0 +1,35 @@
+<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="px-action-sheet-button.html"/>
+
+<dom-module id="px-action-sheet">
+  <link rel="stylesheet" href="css/px-action-sheet.min.css">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    <div class="action-dialog--mask"></div>
+  	<div class="action-dialog">
+  		<div class="action-sheet">
+  			<div class="action-sheet__actions">
+          <content></content>
+  			</div>
+  		</div>
+  	</div>
+  </template>
+  <script>
+    Polymer({
+      is: 'px-action-sheet',
+      properties: {
+        title: {
+          type: String,
+          value: 'List Title'
+        }
+      },
+      created: function(){
+        console.warn(this.tagName, 'created');
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,26 @@
+<link rel="import" href="../polymer/polymer.html"/>
+<dom-module id="px-action-sheet-button">
+  <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+  </style>
+  <template>
+    <button class="action-sheet__button">{{label}}</button>
+  </template>
+  <script>
+    Polymer({
+      is: 'px-action-sheet-button',
+      properties: {
+        label: {
+          type: String,
+          value: 'Action Button'
+        }
+      },
+      created: function(){
+        console.warn(this.tagName, 'created');
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,98 @@
+* {
+  -webkit-tap-highlight-color: transparent; }
+
+.action-sheet {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0px;
+  border-radius: 8px;
+  z-index: 500;
+  position: absolute;
+  bottom: 2%;
+  left: 3%;
+  right: 3%; }
+  .action-sheet__actions {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    .action-sheet__actions > *,
+    .action-sheet__actions px-action-sheet-button {
+      width: 100%;
+      border-radius: 0px;
+      border-bottom: 1px solid #ccc !important;
+      background: #fff; }
+      .action-sheet__actions > *:active,
+      .action-sheet__actions px-action-sheet-button:active {
+        transition: none;
+        opacity: 0.8; }
+      .action-sheet__actions > *:disabled, .action-sheet__actions > *[disabled],
+      .action-sheet__actions px-action-sheet-button:disabled,
+      .action-sheet__actions px-action-sheet-button[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        pointer-events: none; }
+  .action-sheet__button {
+    text-align: center;
+    outline: none;
+    box-shadow: none;
+    border: none !important;
+    width: 100%;
+    margin: 0;
+    display: block;
+    background: transparent;
+    padding: 12px 0;
+    font-size: 1.2rem;
+    color: #177efb;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+    .action-sheet__button:active {
+      transition: none;
+      opacity: 0.8; }
+    .action-sheet__button:disabled, .action-sheet__button[disabled] {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none; }
+    .action-sheet__button:focus {
+      outline: 0;
+      transition: none; }
+    .action-sheet__button:hover {
+      box-shadow: none;
+      transition: none; }
+    .action-sheet__button:first-child {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }
+    .action-sheet__button--delete {
+      color: #fff;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0; }
+    .action-sheet__button--cancel {
+      margin-top: 8px;
+      border-radius: 8px;
+      font-weight: 500; }
+    .action-sheet__button--label {
+      color: #ccc;
+      font-size: .9rem;
+      padding: 20px 12px; }
+
+.action-dialog--mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 5; }
