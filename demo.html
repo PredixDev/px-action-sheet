@@ -2,6 +2,7 @@
 
 <head>
   <title>px-action-sheet demo</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
@@ -50,50 +51,39 @@
   </style>
   <script src="../fastclick/lib/fastclick.js"></script>
   <script type="text/javascript">
-  if ('addEventListener' in document) {
+    if ('addEventListener' in document) {
       document.addEventListener('DOMContentLoaded', function() {
-          FastClick.attach(document.body);
+        FastClick.attach(document.body);
       }, false);
-  }
+    }
   </script>
-
 </head>
 
 <body>
 
   <h1>px-action-sheet</h1>
   <p>The px-action-sheet component is a responsive mobile action sheet.</p>
+  <div class="layout">
+    <div class="layout__item">
+      <button class="btn--large btn btn--full" type="button" onclick="document.getElementById('actionsheet1').toggle()">Action Sheet 1</button>
+    </div>
+    <div class="layout__item">
+      <button class="btn--large btn btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">Action Sheet 2</button>
+    </div>
 
-
-
-  <div class="box box--small u-mb++">
-    <h2>Default</h2>
-    <px-example>
-      <button class="btn--large btn btn--full u-mb+" type="button" onclick="document.getElementById('actionsheet1').toggle()">Toggle Action Sheet</button>
-      <div class="position-relative height-500 u-mb">
-        <px-action-sheet id="actionsheet1">
-          <px-action-sheet-button label="Item 1"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 2"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 3"></px-action-sheet-button>
-          <px-action-sheet-button label="Cancel" type="cancel"></px-action-sheet-button>
-        </px-action-sheet>
-      </div>
-    </px-example>
   </div>
-
-  <div class="box box--small u-mb++">
-    <h2>Default with Destroy Action</h2>
-    <px-example>
-      <button class="btn--large btn btn--full u-mb+" type="button" onclick="document.getElementById('actionsheet2').toggle()">Toggle Action Sheet</button>
-      <div class="position-relative height-500 u-mb">
-        <px-action-sheet id="actionsheet2">
-          <px-action-sheet-button label="This is a two line note to clarify a destructive action you are about to take." type="info"></px-action-sheet-button>
-          <px-action-sheet-button label="Delete" type="danger"></px-action-sheet-button>
-          <px-action-sheet-button label="Cancel" type="cancel"></px-action-sheet-button>
-        </px-action-sheet>
-      </div>
-    </px-example>
-  </div>
+  <px-action-sheet id="actionsheet1">
+    <px-action-sheet-button label="Item 1"></px-action-sheet-button>
+    <px-action-sheet-button label="Item 2"></px-action-sheet-button>
+    <px-action-sheet-button label="Item 3"></px-action-sheet-button>
+    <px-action-sheet-button label="Cancel" type="cancel"></px-action-sheet-button>
+  </px-action-sheet>
+  <px-action-sheet id="actionsheet2">
+    <px-action-sheet-button label="This is a two line note to clarify a destructive action you are about to take." type="info"></px-action-sheet-button>
+    <px-action-sheet-button label="Delete" type="danger"></px-action-sheet-button>
+    <px-action-sheet-button label="Cancel" type="cancel"></px-action-sheet-button>
+  </px-action-sheet>
 
 </body>
+
 </html>

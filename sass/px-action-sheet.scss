@@ -9,6 +9,30 @@
 /// Mixin helpers
 @import 'px-mobile-mixin-designs/_mixins';
 
+
+@mixin actionButton($bgColor){
+	width: 100%;
+	background-color: $bgColor !important;
+	&:active {
+		transition: none;
+		opacity: 0.8;
+	}
+	&:disabled, &[disabled] {
+		opacity: 0.5;
+		cursor: default;
+		pointer-events: none;
+	}
+	&:focus {
+		outline: 0;
+		transition: none;
+	}
+	&:hover {
+		box-shadow: none;
+		transition: none;
+	}
+	@content;
+}
+
 /// Button font color
 $action-sheet-button-font-color: #177efb;
 
