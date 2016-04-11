@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../px-button/px-button.html" />
 <!--
 To use this element:
 
@@ -14,12 +15,12 @@ To use this element:
 <dom-module id="px-action-sheet-button">
   <style>
     :host {
-      display: block;
-      width: 100%;
+      display: flex;
     }
+
   </style>
   <template strip-whitespace>
-    <button class="action-sheet__button">{{label}}</button>
+    <px-button icon$="{{icon}}" theme="primary" size="large">{{label}}</px-button>
   </template>
   <script>
     Polymer({
