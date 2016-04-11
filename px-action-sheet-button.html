@@ -13,14 +13,14 @@ To use this element:
 @homepage index.html
 -->
 <dom-module id="px-action-sheet-button">
+  <template strip-whitespace>
   <style>
     :host {
       display: flex;
     }
-
   </style>
-  <template strip-whitespace>
-    <px-button icon$="{{icon}}" theme="primary" size="large">{{label}}</px-button>
+    <!-- <px-button icon$="{{icon}}" theme="primary" size="large">{{label}}</px-button>-->
+    <button type="button" class="action-sheet__button btn btn--tertiary btn--full">{{label}}</button>
   </template>
   <script>
     Polymer({
@@ -34,11 +34,18 @@ To use this element:
         //The type of action sheet button. (info, danger, close)
         type: {
           type: String
+        },
+        //The theme to apply to the button
+        theme: {
+          type: String
         }
       },
       attached: function() {
         if(this.type){
-          this.toggleClass('action-sheet__button--'+ this.type.toLowerCase(), true, this.children[0]);
+          this.toggleClass('action-sheet__button--'+ this.type.toLowerCase(), true, this.$$('button'));
+        }
+        if(this.theme){
+          this.toggleClass('btn--'+ this.theme.toLowerCase(), true, this.$$('button'));
         }
       }
     });

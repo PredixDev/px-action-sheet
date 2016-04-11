@@ -1,3 +1,4 @@
+
 ////
 /// px-action-sheet styles
 /// @group px-action-sheet
@@ -5,64 +6,35 @@
 /// @since 0.0.1
 /// @todo Need to finalize all documentation.
 ////
-
 /// Mixin helpers
-@import 'px-mobile-mixin-designs/_mixins';
 
 
-@mixin actionButton($bgColor){
-	width: 100%;
-	background-color: $bgColor !important;
-	&:active {
-		transition: none;
-		opacity: 0.8;
-	}
-	&:disabled, &[disabled] {
-		opacity: 0.5;
-		cursor: default;
-		pointer-events: none;
-	}
-	&:focus {
-		outline: 0;
-		transition: none;
-	}
-	&:hover {
-		box-shadow: none;
-		transition: none;
-	}
-	@content;
+@import 'px-mobile-design';
+@import 'px-mobile-mixin-design/_mixins';
+@import 'variables';
+@mixin actionButton($bgColor) {
+  width: 100%;
+  background-color: $bgColor !important;
+  &:active {
+    transition: none;
+    opacity: 0.8;
+  }
+  &:disabled,
+  &[disabled] {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+  &:focus {
+    outline: 0;
+    transition: none;
+  }
+  &:hover {
+    box-shadow: none;
+    transition: none;
+  }
+  @content;
 }
-
-/// Button font color
-$action-sheet-button-font-color: #177efb;
-
-/// Button border color
-$action-sheet-button-border-color: #ccc;
-
-/// Button corder radius
-$action-sheet-button-radius: 8px;
-
-/// Button background color
-$action-sheet-button-background-color: #fff;
-
-/// Active button font color
-$action-sheet-active-button-font-color: #177efb;
-
-/// Active button background color
-$action-sheet-button-background-color: #fff;
-
-/// Delete button font color
-$action-sheet-delete-button-font-color: #FE3F35;
-
-/// Delete button background color
-$action-sheet-delete-button-background-color: #FE3F35;
-
-/// Label button font color
-$action-sheet-label-button-font-color: #777;
-
-/// Label button background color
-$action-sheet-label-button-background-color: #fff;
-
 
 /// The action dialog component.
 /// @example html
@@ -70,11 +42,9 @@ $action-sheet-label-button-background-color: #fff;
 ///		//Action Sheet Here
 ///	</div>
 .action-dialog {
-
-
-	/// The overlay that is behind the action sheet.
-	///@example html
-	///	<div class="action-dialog--mask"></div>
+  /// The overlay that is behind the action sheet.
+  ///@example html
+  ///	<div class="action-dialog--mask"></div>
   @include modifier('mask') {
     transition: all 0.2s;
     position: absolute;
@@ -82,22 +52,21 @@ $action-sheet-label-button-background-color: #fff;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     z-index: 0;
     opacity: 0;
-		visibility: hidden;
+    visibility: hidden;
 
-		/// The overlays visible state.
-		///@example html
-		///	<div class="action-dialog--mask action-dialog--mask--is-open"></div>
+    /// The overlays visible state.
+    ///@example html
+    ///	<div class="action-dialog--mask action-dialog--mask--is-open"></div>
     @include modifier('is-open') {
-      z-index: 5;
+      z-index: 100;
       opacity: 1;
       visibility: visible;
     }
   }
 }
-
 .action-sheet {
   user-select: none;
   padding: 0;
@@ -110,7 +79,6 @@ $action-sheet-label-button-background-color: #fff;
   transition: all 0.3s;
   bottom: 2%;
   transform: translateY(115%);
-
   @include modifier('is-open') {
     z-index: 10;
     transform: translateY(0);
@@ -121,22 +89,20 @@ $action-sheet-label-button-background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-		> px-action-sheet-button {
-			//@include actionButton(#fff);
-			//border-bottom: 1px solid $action-sheet-button-border-color !important;
-			&:last-child{
-				border-bottom: none !important;
-			}
+    > px-action-sheet-button {
+      //@include actionButton(#fff);
+      //border-bottom: 1px solid $action-sheet-button-border-color !important;
+      &:last-child {
+        border-bottom: none !important;
+      }
     }
   }
-
   @include element('button') {
-		@include actionButton(#fff);
-    background: transparent;
+    //@include actionButton(#fff);
+    //background: transparent;
     box-shadow: none;
-    border: none !important;
-    color: $action-sheet-button-font-color;
+    border: none;
+    //color: $action-sheet-button-font-color;
     display: block;
     font-size: 1.2rem;
     text-align: center;
@@ -145,34 +111,30 @@ $action-sheet-label-button-background-color: #fff;
     padding: 12px 0;
     user-select: none;
     width: 100%;
-		cursor: pointer;
-		outline: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0;
+    border-bottom: 1px solid $action-sheet-button-border-color !important;
+    &:last-of-type {}
 
-		border-bottom: 1px solid $action-sheet-button-border-color !important;
-
-		&:last-of-type{
-
-		}
-
-		/// The danger action button styles.
+    /// The danger action button styles.
     @include modifier('danger') {
       color: $action-sheet-delete-button-font-color !important;
-			border-bottom: none !important;
+      border-bottom: none !important;
     }
 
-		/// The cancel action button styles.
+    /// The cancel action button styles.
     @include modifier('cancel') {
-			margin-top: 10px;
-			border-bottom: none !important;
+      margin-top: 10px;
+      border-bottom: none !important;
     }
-
-		/// The info action button styles.
+    /// The info action button styles.
     @include modifier('info') {
       color: $action-sheet-label-button-font-color !important;
       font-size: 1rem;
       padding: 20px 12px;
-			pointer-events: none;
-			&:active {
+      pointer-events: none;
+      &:active {
         transition: none;
         opacity: 1;
       }

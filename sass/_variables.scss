@@ -1,0 +1,30 @@
+@import 'px-mobile-design';
+
+/// Button font color
+$action-sheet-button-font-color: $select-default;
+
+/// Button border color
+$action-sheet-button-border-color: rgba(0,0,0,.2);
+
+/// Button corder radius
+$action-sheet-button-radius: 0px;
+
+
+
+/// Active button background color
+$action-sheet-button-background-color: $white;
+
+/// Delete button font color
+$action-sheet-delete-button-font-color: $red-light;
+
+/// Delete button background color
+$action-sheet-delete-button-background-color: $white;
+
+/// Label button font color
+$action-sheet-label-button-font-color: $gray8;
+
+/// Label button background color
+$action-sheet-label-button-background-color: $white;
+
+/// Active button font color
+$action-sheet-active-button-font-color: $select-hover;

@@ -17,18 +17,18 @@ To use this element:
 @demo demo.html
 @homepage index.html
 -->
+  <link rel="stylesheet" href="css/px-action-sheet.css">
 <dom-module id="px-action-sheet">
-  <link rel="stylesheet" href="css/px-action-sheet.min.css">
+  <template strip-whitespace>
   <style>
     :host {
       display: block;
     }
   </style>
-  <template strip-whitespace>
     <div id="_actionDialogMask" class="action-dialog--mask" on-click="toggle"></div>
     <div id="_actionSheet" class="action-sheet">
       <div id="_actionSheetActions" class="action-sheet__actions">
-        <content></content>
+        <content select="px-action-sheet-button"></content>
       </div>
     </div>
   </template>
