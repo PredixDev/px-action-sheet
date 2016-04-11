@@ -61,7 +61,7 @@
     ///@example html
     ///	<div class="action-dialog--mask action-dialog--mask--is-open"></div>
     @include modifier('is-open') {
-      z-index: 100;
+      z-index: 10;
       opacity: 1;
       visibility: visible;
     }
@@ -80,7 +80,7 @@
   bottom: 2%;
   transform: translateY(115%);
   @include modifier('is-open') {
-    z-index: 10;
+    z-index: 15;
     transform: translateY(0);
     opacity: 1;
     visibility: visible;

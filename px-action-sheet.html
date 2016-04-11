@@ -6,9 +6,10 @@ To use this element:
 
 ```
 <px-action-sheet id="actionsheet1">
-  <px-action-sheet-button label="Item 1"></px-action-sheet-button>
-  <px-action-sheet-button label="Item 2"></px-action-sheet-button>
-  <px-action-sheet-button label="Item 3"></px-action-sheet-button>
+  <px-action-sheet-button label="Item 1" onclick="alert('Item 1')" theme="primary"></px-action-sheet-button>
+  <px-action-sheet-button label="Item 2" onclick="alert('Item 2')"></px-action-sheet-button>
+  <px-action-sheet-button label="Item 3" onclick="alert('Item 3')"></px-action-sheet-button>
+  <px-action-sheet-button label="Cancel" type="cancel" onclick="document.getElementById('actionsheet1').toggle()"></px-action-sheet-button>
 </px-action-sheet>
 ```
 
