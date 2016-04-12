@@ -7,6 +7,7 @@
 
   <link rel='stylesheet prefetch' href='http://predixdev.github.io/px-library-design/css/style.css'>
 
+  <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
   <link rel="import" href="../px-example/px-example.html">
   <link rel="import" href="px-action-sheet.html">
@@ -51,35 +52,40 @@
 
 <body>
 
-  <main class="position-relative viewport">
 
-    <div class="box u-mt">
-      <h1>px-action-sheet</h1>
-      <p>The px-action-sheet component is a responsive mobile action sheet.</p>
+      <main class="position-relative viewport">
 
-      <div class="layout">
-        <div class="layout__item">
-          <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet1').toggle()">Action Sheet 1</button>
+        <div class="box u-mt">
+          <h1>px-action-sheet</h1>
+          <p>The px-action-sheet component is a responsive mobile action sheet.</p>
+
+          <demo-snippet>
+            <template id="">
+          <div class="layout">
+            <div class="layout__item">
+              <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet1').toggle()">Action Sheet 1</button>
+            </div>
+            <div class="layout__item">
+              <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">Action Sheet 2</button>
+            </div>
+          </div>
         </div>
-        <div class="layout__item">
-          <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">Action Sheet 2</button>
-        </div>
-      </div>
-    </div>
 
-    <px-action-sheet id="actionsheet1">
-      <px-action-sheet-button label="Item 1" onclick="alert('Item 1')" theme="primary"></px-action-sheet-button>
-      <px-action-sheet-button label="Item 2" onclick="alert('Item 2')"></px-action-sheet-button>
-      <px-action-sheet-button label="Item 3" onclick="alert('Item 3')"></px-action-sheet-button>
-      <px-action-sheet-button label="Cancel" type="cancel" onclick="document.getElementById('actionsheet1').toggle()"></px-action-sheet-button>
-    </px-action-sheet>
-    <px-action-sheet id="actionsheet2">
-      <px-action-sheet-button label="This is a two line note to clarify a destructive action you are about to take." type="info"></px-action-sheet-button>
-      <px-action-sheet-button label="Delete" type="danger" onclick="alert('Delete Item')"></px-action-sheet-button>
-      <px-action-sheet-button label="Cancel" type="cancel" onclick="document.getElementById('actionsheet2').toggle()"></px-action-sheet-button>
-    </px-action-sheet>
+        <px-action-sheet id="actionsheet1">
+          <px-action-sheet-button label="Item 1" onclick="alert('Item 1')" theme="primary"></px-action-sheet-button>
+          <px-action-sheet-button label="Item 2" onclick="alert('Item 2')"></px-action-sheet-button>
+          <px-action-sheet-button label="Item 3" onclick="alert('Item 3')"></px-action-sheet-button>
+          <px-action-sheet-button label="Cancel" type="cancel" onclick="document.getElementById('actionsheet1').toggle()"></px-action-sheet-button>
+        </px-action-sheet>
+        <px-action-sheet id="actionsheet2">
+          <px-action-sheet-button label="This is a two line note to clarify a destructive action you are about to take." type="info"></px-action-sheet-button>
+          <px-action-sheet-button label="Delete" type="danger" onclick="alert('Delete Item')"></px-action-sheet-button>
+          <px-action-sheet-button label="Cancel" type="cancel" onclick="document.getElementById('actionsheet2').toggle()"></px-action-sheet-button>
+        </px-action-sheet>
+      </template>
+      </demo-snippet>
+      </main>
 
-  </main>
 
 </body>
 
