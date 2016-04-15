@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
   <link rel='stylesheet prefetch' href='http://predixdev.github.io/px-library-design/css/style.css'>
 
 
@@ -23,8 +23,15 @@
 </head>
 
 <body>
-
-  <button class="btn--large btn btn--full u-mb+" type="button" onclick="document.getElementById('actionsheet1').toggle()">Toggle Action Sheet</button>
+  <link rel="import" href="../px-navbar/px-navbar.html">
+  <px-navbar title="px-action-sheet">
+    <div>
+      <px-button label="Action 1" theme="primary" onclick="document.getElementById('actionsheet1').toggle()"></px-button>
+    </div>
+    <div>
+      <px-button label="Action 2" theme="primary" onclick="document.getElementById('actionsheet1').toggle()"></px-button>
+    </div>
+  </px-navbar>
   <px-action-sheet id="actionsheet1">
     <px-action-sheet-button label="Item 1"></px-action-sheet-button>
     <px-action-sheet-button label="Item 2"></px-action-sheet-button>
