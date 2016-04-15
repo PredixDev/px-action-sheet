@@ -11,7 +11,7 @@
 
   <!-- TODO: pxm components -->
   <link rel="import" href="px-action-sheet.html">
-
+  <link rel="import" href="../px-navbar/px-navbar.html">
 
   <script type="text/javascript">
     if ('addEventListener' in document) {
@@ -20,10 +20,18 @@
       }, false);
     }
   </script>
+
+  <style media="screen">
+    body{
+      overflow:hidden;
+      position:relative;
+      height: 100vh;
+    }
+  </style>
 </head>
 
 <body>
-  <link rel="import" href="../px-navbar/px-navbar.html">
+
   <px-navbar title="px-action-sheet">
     <div>
       <px-button label="Action 1" theme="primary" onclick="document.getElementById('actionsheet1').toggle()"></px-button>
