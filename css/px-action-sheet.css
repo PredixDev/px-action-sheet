@@ -1,11 +1,11 @@
 .action-dialog--mask {
-  transition: all 0.2s;
+  transition: all .2s;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 0;
   opacity: 0;
   visibility: hidden; }
@@ -20,13 +20,13 @@
   -ms-user-select: none;
   user-select: none;
   padding: 0;
-  border-radius: 0px;
+  border-radius: 0;
   z-index: 500;
   position: absolute;
   bottom: -35%;
   left: 3%;
   right: 3%;
-  transition: all 0.3s;
+  transition: all .3s;
   bottom: 2%;
   -webkit-transform: translateY(115%);
   transform: translateY(115%); }
@@ -55,8 +55,9 @@
     font-size: 1.2rem;
     text-align: center;
     margin: 0;
+    line-height: 44px;
     outline: none;
-    padding: 12px 0;
+    padding: 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -76,7 +77,9 @@
       color: #525156 !important;
       font-size: 1rem;
       padding: 20px 12px;
-      pointer-events: none; }
+      pointer-events: none;
+      white-space: pre-wrap;
+      line-height: normal; }
       .action-sheet__button--info:active {
         transition: none;
         opacity: 1; }

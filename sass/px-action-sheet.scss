@@ -7,28 +7,29 @@
 /// @todo Need to finalize all documentation.
 ////
 /// Mixin helpers
-
-
-@import 'px-mobile-design';
 @import 'px-mobile-mixin-design/_mixins';
 @import 'variables';
 @mixin actionButton($bgColor) {
-  width: 100%;
+  width           : 100%;
   background-color: $bgColor !important;
+
   &:active {
     transition: none;
-    opacity: 0.8;
+    opacity   : .8;
   }
+
   &:disabled,
   &[disabled] {
-    opacity: 0.5;
-    cursor: default;
+    opacity       : .5;
+    cursor        : default;
     pointer-events: none;
   }
+
   &:focus {
-    outline: 0;
+    outline   : 0;
     transition: none;
   }
+
   &:hover {
     box-shadow: none;
     transition: none;
@@ -45,50 +46,54 @@
   /// The overlay that is behind the action sheet.
   ///@example html
   ///	<div class="action-dialog--mask"></div>
-  @include modifier('mask') {
-    transition: all 0.2s;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  @include modifier ('mask') {
+    transition: all .2s;
+    position  : absolute;
+    top       : 0;
+    bottom    : 0;
+    left      : 0;
+    right     : 0;
     background: rgba(0,0,0,0.2);
-    z-index: 0;
-    opacity: 0;
+    z-index   : 0;
+    opacity   : 0;
     visibility: hidden;
 
     /// The overlays visible state.
     ///@example html
     ///	<div class="action-dialog--mask action-dialog--mask--is-open"></div>
-    @include modifier('is-open') {
-      z-index: 10;
-      opacity: 1;
+    @include modifier ('is-open') {
+      z-index   : 10;
+      opacity   : 1;
       visibility: visible;
     }
   }
 }
+
 .action-sheet {
-  user-select: none;
-  padding: 0;
+  user-select  : none;
+  padding      : 0;
   border-radius: $action-sheet-button-radius;
-  z-index: 500;
-  position: absolute;
-  bottom: -35%;
-  left: 3%;
-  right: 3%;
-  transition: all 0.3s;
-  bottom: 2%;
-  transform: translateY(115%);
-  @include modifier('is-open') {
-    z-index: 15;
-    transform: translateY(0);
-    opacity: 1;
+  z-index      : 500;
+  position     : absolute;
+  bottom       : -35%;
+  left         : 3%;
+  right        : 3%;
+  transition   : all .3s;
+  bottom       : 2%;
+  transform    : translateY(115%);
+
+  @include modifier ('is-open') {
+    z-index   : 15;
+    transform : translateY(0);
+    opacity   : 1;
     visibility: visible;
   }
-  @include element('actions') {
-    display: flex;
-    flex-direction: column;
+
+  @include element ('actions') {
+    display        : flex;
+    flex-direction : column;
     justify-content: space-between;
+
     > px-action-sheet-button {
       //@include actionButton(#fff);
       //border-bottom: 1px solid $action-sheet-button-border-color !important;
@@ -97,47 +102,52 @@
       }
     }
   }
-  @include element('button') {
+
+  @include element ('button') {
     //@include actionButton(#fff);
     //background: transparent;
-    box-shadow: none;
-    border: none;
+    box-shadow   : none;
+    border       : none;
     //color: $action-sheet-button-font-color;
-    display: block;
-    font-size: 1.2rem;
-    text-align: center;
-    margin: 0;
-    line-height: 16px;
-    outline: none;
-    padding: 12px 0;
-    user-select: none;
-    width: 100%;
-    cursor: pointer;
-    outline: none;
+    display      : block;
+    font-size    : 1.2rem;
+    text-align   : center;
+    margin       : 0;
+    line-height  : 44px;
+    outline      : none;
+    padding      : 0;
+    user-select  : none;
+    width        : 100%;
+    cursor       : pointer;
+    outline      : none;
     border-radius: 0;
     border-bottom: 1px solid $action-sheet-button-border-color !important;
+
     &:last-of-type {}
 
     /// The danger action button styles.
-    @include modifier('danger') {
-      color: $action-sheet-delete-button-font-color !important;
+    @include modifier ('danger') {
+      color        : $action-sheet-delete-button-font-color !important;
       border-bottom: none !important;
     }
 
     /// The cancel action button styles.
-    @include modifier('cancel') {
-      margin-top: 10px;
+    @include modifier ('cancel') {
+      margin-top   : 10px;
       border-bottom: none !important;
     }
     /// The info action button styles.
-    @include modifier('info') {
-      color: $action-sheet-label-button-font-color !important;
-      font-size: 1rem;
-      padding: 20px 12px;
+    @include modifier ('info') {
+      color         : $action-sheet-label-button-font-color !important;
+      font-size     : 1rem;
+      padding       : 20px 12px;
       pointer-events: none;
+      white-space   : pre-wrap;
+      line-height   : normal;
+
       &:active {
         transition: none;
-        opacity: 1;
+        opacity   : 1;
       }
     }
   }
