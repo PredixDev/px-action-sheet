@@ -1,10 +1,10 @@
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="../px-button/px-button.html" />
+
 <!--
-To use this element:
+## Usage
 
 ```
-<px-action-sheet-button label="Item 1"></px-action-sheet-button>
+<px-action-sheet-button label="Item 1" icon="fa fa-edit"></px-action-sheet-button>
 ```
 
 @element px-action-sheet-button.html
@@ -14,13 +14,7 @@ To use this element:
 -->
 <dom-module id="px-action-sheet-button">
   <template strip-whitespace>
-  <style>
-    :host {
-    
-    }
-  </style>
-    <!-- <px-button icon$="{{icon}}" theme="primary" size="large">{{label}}</px-button>-->
-    <button type="button" class="action-sheet__button btn btn--tertiary btn--full">
+    <button id="btn" type="button" class="action-sheet__button btn btn--full">
       <i class$="{{icon}}"></i>
       <span>{{label}}</span>
     </button>
@@ -29,18 +23,14 @@ To use this element:
     Polymer({
       is: 'px-action-sheet-button',
       properties: {
-        //The label of the button.
+        //The label of the button
         label: {
+          type: String
+        },
+        //The CSS class name to apply
+        btnClass: {
           type: String,
-          value: 'Action Button'
-        },
-        //The type of action sheet button. (info, danger, close)
-        type: {
-          type: String
-        },
-        //The theme to apply to the button
-        theme: {
-          type: String
+          value: 'btn--tertiary'
         },
         //The icon to apply
         icon: {
@@ -48,11 +38,8 @@ To use this element:
         }
       },
       attached: function() {
-        if(this.type){
-          this.toggleClass('action-sheet__button--'+ this.type.toLowerCase(), true, this.$$('button'));
-        }
-        if(this.theme){
-          this.toggleClass('btn--'+ this.theme.toLowerCase(), true, this.$$('button'));
+        if(this.btnClass){
+          this.toggleClass(this.btnClass, true, this.$.btn);
         }
       }
     });

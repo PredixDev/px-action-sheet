@@ -7,11 +7,19 @@
 
 ## Usage
 ```
-<px-action-sheet id="actionsheet1">
-  <px-action-sheet-button label="Item 1" onclick="alert('Item 1')" theme="primary"></px-action-sheet-button>
-  <px-action-sheet-button label="Item 2" onclick="alert('Item 2')"></px-action-sheet-button>
-  <px-action-sheet-button label="Item 3" onclick="alert('Item 3')"></px-action-sheet-button>
-  <px-action-sheet-button label="Cancel" type="cancel" onclick="document.getElementById('actionsheet1').toggle()"></px-action-sheet-button>
+
+<button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">
+  List Action Sheet
+</button>
+
+<px-action-sheet id="actionsheet2" list>
+  <div class="u-m--">
+    <h3>Open in</h3>
+  </div>
+  <px-action-sheet-button label="Github" icon="fa fa-lg fa-github"></px-action-sheet-button>
+  <px-action-sheet-button label="Facebook" icon="fa fa-lg fa-facebook"></px-action-sheet-button>
+  <px-action-sheet-button label="Twitter" icon="fa fa-lg fa-twitter"></px-action-sheet-button>
+  <px-action-sheet-button label="Linked In" icon="fa fa-lg fa-linkedin"></px-action-sheet-button>
 </px-action-sheet>
 ```
 

@@ -32,10 +32,10 @@
     "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
     "px-spacing-design": "https://github.com/PredixDev/px-spacing-design.git",
     "px-colors-design": "https://github.com/PredixDev/px-colors-design.git",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.3",
     "px-mobile-mixin-design": "https://github.com/PredixDev/px-mobile-mixin-design.git"
   },
   "resolutions": {
-    "polymer": "~v1.2.3",
-    "fetch": "~0.10.0"
+    "polymer": "~v1.2.4"
   }
 }
