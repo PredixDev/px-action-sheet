@@ -82,7 +82,7 @@
   background-color: white;
   background-color: var(--px-action-sheet-background-color, white);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); }
-  @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
+  @media (max-width: 47.9em) {
     .action-sheet {
       border-left: none;
       border-right: none; } }
@@ -92,15 +92,15 @@
             transform: translateY(0);
     opacity: 1;
     visibility: visible; }
-  @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
+  @media (max-width: 47.9em) {
     .action-sheet {
       left: 0;
       right: 0; } }
-  @media (min-width: 767px) {
+  @media (max-width: 61.9em) {
     .action-sheet {
       left: 5%;
       right: 5%; } }
-  @media (min-width: 1200px) {
+  @media (max-width: 75em) {
     .action-sheet {
       left: 25%;
       right: 25%; } }
@@ -133,7 +133,7 @@
             -ms-flex: 1 0 80px;
                 flex: 1 0 80px;
         margin: 0.6666666667rem; }
-        @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
+        @media (max-width: 47.9em) {
           .action-sheet__actions--grid px-action-sheet-button {
             margin: 0.3333333333rem; } }
       .action-sheet__actions--grid .action-sheet__button {
