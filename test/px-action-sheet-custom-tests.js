@@ -14,25 +14,25 @@ function runCustomTests() {
 
     test('can toggle - open', function () {
       element.toggle();
-      assert(element.isOpen === true);
+      assert(element.open === true);
     });
 
     test('can toggle - close', function () {
       element.toggle();
-      assert(element.isOpen === false);
+      assert(element.open === false);
     });
 
     test('can toggle - isOpen', function () {
-      var state = element.isOpen;
-      element.isOpen = !state;
-      assert(element.isOpen === true);
+      var state = element.open;
+      element.open = !state;
+      assert(element.open === true);
     });
 
     test('Dialog Mask can close action sheet.', function () {
       //element.isOpen = !element.isOpen;
-      element.isOpen = true;
+      element.open = true;
       element.$._actionDialogMask.click();
-      assert(element.isOpen === false);
+      assert(element.open === false);
     });
   });
 };
