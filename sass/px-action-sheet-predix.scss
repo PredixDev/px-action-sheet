@@ -1,10 +1,8 @@
-
 ////
 /// px-action-sheet styles
 /// @group px-action-sheet
 /// @author Jonnie Spratley
 /// @since 0.0.1
-/// @todo Need to finalize all documentation.
 ////
 /// Mixin helpers
 @import 'px-mobile-mixin-design/_mixins';
@@ -47,14 +45,14 @@
   ///@example html
   ///	<div class="action-dialog--mask"></div>
   @include modifier ('mask') {
-    transition: all .2s;
-    position  : absolute;
+    transition: $action-sheet-mask-transition;
+    position  : fixed;
     top       : 0;
     bottom    : 0;
     left      : 0;
     right     : 0;
-    background: rgba(0,0,0,0.2);
-    z-index   : 0;
+    background: $action-sheet-mask-background-color;
+    z-index   : -1;
     opacity   : 0;
     visibility: hidden;
 
@@ -62,6 +60,7 @@
     ///@example html
     ///	<div class="action-dialog--mask action-dialog--mask--is-open"></div>
     @include modifier ('is-open') {
+      position  : fixed;
       z-index   : 10;
       opacity   : 1;
       visibility: visible;
@@ -70,23 +69,49 @@
 }
 
 .action-sheet {
-  user-select  : none;
-  padding      : 0;
-  border-radius: $action-sheet-button-radius;
-  z-index      : 500;
-  position     : absolute;
-  bottom       : -35%;
-  left         : 3%;
-  right        : 3%;
-  transition   : all .3s;
-  bottom       : 2%;
-  transform    : translateY(115%);
+  user-select     : none;
+  padding         : 0;
+  border-radius   : $action-sheet-button-radius;
+  z-index         : -1;
+  position        : fixed;
+
+  left            : 0;
+  right           : 0;
+  transition      : $action-sheet-transition;
+  bottom          : 0;
+  transform       : translateY(115%);
+
+  border          : $action-sheet-border;
+  border          : var(--px-action-sheet-border, $action-sheet-border);
+  background-color: $action-sheet-background-color;
+  background-color: var(--px-action-sheet-background-color, $action-sheet-background-color);
+  box-shadow      : $action-sheet-box-shadow;
+
+  @include respond ('small') {
+    border-left : none;
+    border-right: none;
+  }
 
   @include modifier ('is-open') {
-    z-index   : 15;
+    z-index   : $action-sheet-zindex;
     transform : translateY(0);
     opacity   : 1;
     visibility: visible;
+  }
+
+  @include respond ('small') {
+    left : 0;
+    right: 0;
+  }
+
+  @include respond ('medium') {
+    left : 5%;
+    right: 5%;
+  }
+
+  @include respond ('large') {
+    left : 25%;
+    right: 25%;
   }
 
   @include element ('actions') {
@@ -95,33 +120,79 @@
     justify-content: space-between;
 
     > px-action-sheet-button {
+      flex  : 1;
+      margin: 0;
+
       //@include actionButton(#fff);
       //border-bottom: 1px solid $action-sheet-button-border-color !important;
       &:last-child {
         border-bottom: none !important;
       }
     }
+
+    @include modifier ('grid') {
+      flex-direction: row;
+      flex-wrap     : wrap;
+
+      px-action-sheet-button {
+        flex  : 1 0 80px;
+        margin: $action-sheet-button-margin;
+
+        @include respond ('small') {
+          margin: $inuit-base-spacing-unit--tiny;
+        }
+      }
+
+      .action-sheet__button {
+        align-items   : center;
+        flex-direction: column;
+        flex-wrap     : wrap;
+      }
+    }
+
+    @include modifier ('list') {
+      flex-direction: column !important;
+      flex-wrap     : wrap;
+
+      px-action-sheet-button {
+        flex  : 1;
+        margin: 0;
+      }
+
+      .action-sheet__button {
+        display       : flex;
+        flex-direction: row;
+        align-items   : center;
+        flex          : 1;
+        margin        : 0 !important;
+        text-align    : left;
+
+        i {
+          margin-left : $action-sheet-button-margin;
+          margin-right: $action-sheet-button-margin;
+        }
+      }
+    }
+
   }
 
   @include element ('button') {
-    //@include actionButton(#fff);
-    //background: transparent;
     box-shadow   : none;
     border       : none;
-    //color: $action-sheet-button-font-color;
-    display      : block;
-    font-size    : 1.2rem;
+    display      : flex;
     text-align   : center;
-    margin       : 0;
-    line-height  : 44px;
     outline      : none;
-    padding      : 0;
     user-select  : none;
     width        : 100%;
     cursor       : pointer;
     outline      : none;
     border-radius: 0;
-    border-bottom: 1px solid $action-sheet-button-border-color !important;
+    padding      : $action-sheet-button-padding;
+    border-bottom: $action-sheet-button-border;
+
+    > * {
+      user-select: none;
+    }
 
     &:last-of-type {}
 
@@ -131,16 +202,9 @@
       border-bottom: none !important;
     }
 
-    /// The cancel action button styles.
-    @include modifier ('cancel') {
-      margin-top   : 10px;
-      border-bottom: none !important;
-    }
     /// The info action button styles.
     @include modifier ('info') {
       color         : $action-sheet-label-button-font-color !important;
-      font-size     : 1rem;
-      padding       : 20px 12px;
       pointer-events: none;
       white-space   : pre-wrap;
       line-height   : normal;

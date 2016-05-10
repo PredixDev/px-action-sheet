@@ -16,11 +16,14 @@ To use this element:
   <template strip-whitespace>
   <style>
     :host {
-      display: flex;
+    
     }
   </style>
     <!-- <px-button icon$="{{icon}}" theme="primary" size="large">{{label}}</px-button>-->
-    <button type="button" class="action-sheet__button btn btn--tertiary btn--full">{{label}}</button>
+    <button type="button" class="action-sheet__button btn btn--tertiary btn--full">
+      <i class$="{{icon}}"></i>
+      <span>{{label}}</span>
+    </button>
   </template>
   <script>
     Polymer({
@@ -37,6 +40,10 @@ To use this element:
         },
         //The theme to apply to the button
         theme: {
+          type: String
+        },
+        //The icon to apply
+        icon: {
           type: String
         }
       },

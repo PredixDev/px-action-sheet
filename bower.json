@@ -4,10 +4,10 @@
   "authors": [
     "Jonnie Spratley <jonnie.spratley@ge.com>"
   ],
-  "description": "A web component for a list",
+  "description": "A web component for actions",
   "repository": {
     "type": "git",
-    "url": "https://github.build.ge.com/PredixComponents/px-action-sheet.git"
+    "url": "https://github.com/PredixDev/px-action-sheet.git"
   },
   "main": "px-action-sheet.html",
   "keywords": [
@@ -28,8 +28,11 @@
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
-    "px-mobile-design": "https://github.build.ge.com/PredixComponents/px-mobile-design.git",
-    "px-mobile-mixin-design": "https://github.build.ge.com/PredixComponents/px-mobile-mixin-design.git"
+    "px-navbar": "https://github.com/PredixDev/px-navbar.git",
+    "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
+    "px-spacing-design": "https://github.com/PredixDev/px-spacing-design.git",
+    "px-colors-design": "https://github.com/PredixDev/px-colors-design.git",
+    "px-mobile-mixin-design": "https://github.com/PredixDev/px-mobile-mixin-design.git"
   },
   "resolutions": {
     "polymer": "~v1.2.3",
