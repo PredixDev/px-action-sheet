@@ -2,13 +2,16 @@ module.exports = {
   verbose: true,
   plugins: {
     local: {
-      browsers: ['chrome', 'firefox']
+      browsers: [
+				'safari',
+				'chrome', 'firefox'
+			]
     },
     sauce: {
       disabled: true
     }
   },
   suites: [
-    'test/px-action-sheet-test-fixture.html'
-  ]
+		'test/px-action-sheet-test-fixture.html'
+	]
 };
