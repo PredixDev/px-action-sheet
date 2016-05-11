@@ -1,5 +1,4 @@
-<link rel="import" href="../polymer/polymer.html" />
-
+<link rel="import" href="../polymer/polymer.html"/>
 <!--
 ## Usage
 
@@ -23,22 +22,28 @@
     Polymer({
       is: 'px-action-sheet-button',
       properties: {
-        //The label of the button
+        /**
+         * The label of the button
+         */
         label: {
           type: String
         },
-        //The CSS class name to apply
+        /**
+         * The CSS class name to apply
+         */
         btnClass: {
           type: String,
           value: 'btn--tertiary'
         },
-        //The icon to apply
+        /**
+         * The icon to apply
+         */
         icon: {
           type: String
         }
       },
-      attached: function() {
-        if(this.btnClass){
+      attached: function () {
+        if (this.btnClass) {
           this.toggleClass(this.btnClass, true, this.$.btn);
         }
       }

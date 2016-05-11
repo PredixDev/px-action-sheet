@@ -1,5 +1,5 @@
-<link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="px-action-sheet-button.html" />
+<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="px-action-sheet-button.html"/>
 <!--
 <p>
   For demo visit <a href="demo.html" target="_blank">Full demo here</a> or <a href="mobile-demo.html" target="_blank">Mobile demo here</a>
@@ -28,14 +28,16 @@
 @demo demo.html
 @homepage index.html
 -->
-  <link rel="stylesheet" href="css/px-action-sheet.css">
+
 <dom-module id="px-action-sheet">
+  <link rel="stylesheet" href="css/px-action-sheet.css">
   <template strip-whitespace>
-  <style>
-    :host {
-      display: block;
-    }
-  </style>
+    <style>
+      :host {
+        display: block;
+      }
+
+    </style>
     <div id="_actionDialogMask" class="action-dialog--mask" on-click="toggle"></div>
     <div id="_actionSheet" class="action-sheet">
       <div id="_actionSheetActions" class="action-sheet__actions">
@@ -47,44 +49,54 @@
     Polymer({
       is: 'px-action-sheet',
       properties: {
-        //The current state of the action sheet
+        /**
+         * The current state of the action sheet
+         */
         open: {
           type: Boolean,
           observer: '_openHandler',
           value: false
         },
-        //Use grid based action buttons
+        /**
+         * Use grid based action buttons
+         */
         grid: {
           type: Boolean,
           value: false
         },
-        //Use list based action buttons
+        /**
+         * Use list based action buttons
+         */
         list: {
           type: Boolean,
           value: false
         }
       },
-      attached: function(){
-        if(this.grid){
+      attached: function () {
+        if (this.grid) {
           this.toggleClass('action-sheet__actions--grid', this.grid, this.$._actionSheetActions);
         }
-        if(this.list){
+        if (this.list) {
           this.toggleClass('action-sheet__actions--list', this.list, this.$._actionSheetActions);
         }
       },
-      //I handle invoking the toggleHandler when the value changes.
-      _openHandler: function(newVal, oldVal) {
+      /**
+       * Handle invoking the toggleHandler when the value changes.
+       */
+      _openHandler: function (newVal, oldVal) {
         this._toggleHandler();
       },
-      //I handle toggling the visibility of the action sheet.
-      _toggleHandler: function(show) {
-        //this.$._actionDialogMask.hidden = !this.$._actionDialogMask.hidden;
-        //this.toggleClass('action-sheet--is-open', show || this.open);
+      /**
+       * Handle toggling the visibility of the action sheet.
+       */
+      _toggleHandler: function (show) {
         this.toggleClass('action-dialog--mask--is-open', show || this.open, this.$._actionDialogMask);
         this.toggleClass('action-sheet--is-open', show || this.open, this.$._actionSheet);
       },
-      //I handle toggling value of open, which in turn toggles the visibility.
-      toggle: function() {
+      /**
+       * Handle toggling value of open, which in turn toggles the visibility.
+       */
+      toggle: function () {
         this.open = !this.open;
       }
     });

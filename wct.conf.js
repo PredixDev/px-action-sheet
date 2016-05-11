@@ -3,15 +3,15 @@ module.exports = {
   plugins: {
     local: {
       browsers: [
-				'safari',
-				'chrome', 'firefox'
-			]
+        'safari',
+        'chrome', 'firefox'
+      ]
     },
     sauce: {
       disabled: true
     }
   },
   suites: [
-		'test/px-action-sheet-test-fixture.html'
-	]
+    'test/px-action-sheet-test-fixture.html'
+  ]
 };
