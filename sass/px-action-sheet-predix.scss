@@ -13,12 +13,12 @@
 
   &:active {
     transition: none;
-    opacity   : .8;
+    opacity   : 0.8;
   }
 
   &:disabled,
   &[disabled] {
-    opacity       : .5;
+    opacity       : 0.5;
     cursor        : default;
     pointer-events: none;
   }
@@ -90,6 +90,12 @@
   @include respond ('small') {
     border-left : none;
     border-right: none;
+  }
+
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select  : none;
+    user-select          : none;
   }
 
   @include modifier ('is-open') {
