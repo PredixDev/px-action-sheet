@@ -13,7 +13,7 @@
 -->
 <dom-module id="px-action-sheet-button">
   <template strip-whitespace>
-    <button id="btn" type="button" class="action-sheet__button btn btn--full">
+    <button id="btn" type="button" class=" btn btn--full">
       <i class$="{{icon}}"></i>
       <span>{{label}}</span>
     </button>
@@ -43,7 +43,9 @@
         }
       },
       attached: function () {
+        this.toggleClass('action-sheet__button', true);
         if (this.btnClass) {
+
           this.toggleClass(this.btnClass, true, this.$.btn);
         }
       }
