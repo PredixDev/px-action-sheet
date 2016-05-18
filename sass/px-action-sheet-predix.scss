@@ -147,9 +147,9 @@
 
       px-action-sheet-button {
         flex  : 1 0 80px;
-        margin: $action-sheet-button-margin;
+        padding: $action-sheet-button-margin;
 
-        @include respond ('small') {
+        @include media-breakpoint-down (sm) {
           margin: $inuit-base-spacing-unit--tiny;
         }
       }
@@ -202,7 +202,17 @@
     border-bottom: $action-sheet-button-border;
 
     > * {
-      user-select: none;
+      @include noselect();
+      outline: none;
+    }
+
+    .btn{
+      height: 100%;
+      width: 100%;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     &:last-of-type {}
