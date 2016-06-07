@@ -3,8 +3,7 @@ module.exports = {
   plugins: {
     local: {
       browsers: [
-        'safari',
-        'chrome', 'firefox'
+        'chrome'
       ]
     },
     sauce: {
