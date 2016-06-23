@@ -1,100 +1,155 @@
 <html>
-<head>
-  <title>px-action-sheet demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <script src="../webcomponentsjs/webcomponents.min.js"></script>
-  <script src="../fastclick/lib/fastclick.js"></script>
-  <script type="text/javascript">
-    if ('addEventListener' in document) {
-      document.addEventListener('DOMContentLoaded', function() {
-        FastClick.attach(document.body);
-      }, false);
-    }
-  </script>
-  <link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
-  <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
-  <link rel="import" href="px-action-sheet.html">
-  <style media="screen">
-    html, body {
-      background: #eee;
-    }
+  <head>
+    <title>px-action-sheet demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../px-theme/px-app.html">
+    <link rel="import" href="../px-partials/px-partials.html">
+    <link rel="import" href="../px-table-view/px-table-view.html">
+    <link rel="import" href="../px-theme/px-theme.html">
+    <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+    <link rel="import" href="px-action-sheet.html">
+    <style media="screen">
+      body,
+      html {
+        background: #eee !important;
+      }
 
-    .position-relative {
-      position: relative;
-      overflow: hidden;
+      .position-relative {
+        position: relative;
+        overflow: hidden;
 
-    }
+      }
 
+    </style>
 
-  </style>
+  </head>
 
-</head>
+  <body>
+    <div class="viewport u-pt">
 
-<body>
+      <div class="u-m+">
+        <h1 class="beta">px-action-sheet</h1>
+        <p>The
+          <code>px-action-sheet</code>
+          component is a responsive action sheet.</p>
+        <p>
+          To view the mobile demo visit
+          <a href="mobile-demo.html" target="_blank">here.</a>
+        </p>
+      </div>
 
+      <div class="u-m+">
+        <h2>Action Sheet - Grid</h2>
+        <demo-snippet>
+          <template>
+            <button class="btn--large btn btn--tertiary btn--full" type="button"
+            onclick="document.getElementById('actionsheet1').toggle()">Grid Action Sheet
+            </button>
+            <px-action-sheet id="actionsheet1" modifier="list">
+              <px-table-view modifier="row responsive">
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+              </px-table-view>
 
-<div class="u-m+">
-  <h1>px-action-sheet</h1>
-  <p>The <code>px-action-sheet</code> component is a responsive action sheet.</p>
-  <p>
-    To view the mobile demo visit <a href="mobile-demo.html" target="_blank">here.</a>
-  </p>
-</div>
+            </px-action-sheet>
 
-  <div class="u-m+">
-    <h2>Action Sheet - Grid</h2>
-    <demo-snippet>
-      <template>
-        <button class="btn--large btn btn--tertiary btn--full" type="button"
-                onclick="document.getElementById('actionsheet1').toggle()">Grid Action Sheet
-        </button>
-        <px-action-sheet id="actionsheet1" grid>
-          <px-action-sheet-button label="Item 1" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 2" icon="fa fa-2x fa-paste"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 3" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 4" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 5" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 6" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 7" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 8" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 9" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 10" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 11" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-          <px-action-sheet-button label="Item 12" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-        </px-action-sheet>
+          </template>
+        </demo-snippet>
+      </div>
+      <div class="u-m+">
+        <h2>Action Sheet w/ settings</h2>
+        <demo-snippet>
+          <template>
+            <button class="btn--large btn btn--tertiary btn--full" type="button"
+            onclick="document.getElementById('actionsheet2').toggle()">Grid Action Sheet
+            </button>
+            <px-action-sheet id="actionsheet2" modifier="">
+              <px-table-row title="Offline Database" icon="fa:fa-database" modifier="switch">
+                <px-table-row-switch name="cb" size="small"></px-table-row-switch>
+              </px-table-row>
+              <px-table-row title="Debug" icon="fa:fa-bug" modifier="switch">
+                <px-table-row-switch name="cb" size="small"></px-table-row-switch>
+              </px-table-row>
+              <px-table-row title="WiFi" icon="fa:fa-wifi" modifier="switch">
+                <px-table-row-switch name="cb" size="small"></px-table-row-switch>
+              </px-table-row>
 
-      </template>
-    </demo-snippet>
-  </div>
+            </px-action-sheet>
 
+          </template>
+        </demo-snippet>
+      </div>
 
-  <div class="u-m+">
-      <h2>Action Sheet - List</h2>
-    <demo-snippet>
-      <template>
-        <button class="btn--large btn btn--tertiary btn--full" type="button"
-                onclick="document.getElementById('actionsheet2').toggle()">List Action Sheet
-        </button>
+      <div class="u-m+">
+        <h2>A modal bottom sheet with a set of actions in a list</h2>
+        <demo-snippet>
+          <template>
+            <button class="btn--large btn btn--tertiary btn--full" type="button"
+            onclick="document.getElementById('actionsheet3').toggle()">List Action Sheet
+            </button>
+            <px-action-sheet id="actionsheet3" list>
 
-        <px-action-sheet id="actionsheet2" list>
-          <div class="u-m--">
-            <h3>Open in</h3>
-          </div>
-          <px-action-sheet-button label="Github" icon="fa fa-lg fa-github"></px-action-sheet-button>
-          <px-action-sheet-button label="Facebook" icon="fa fa-lg fa-facebook"></px-action-sheet-button>
-          <px-action-sheet-button label="Twitter" icon="fa fa-lg fa-twitter"></px-action-sheet-button>
-          <px-action-sheet-button label="Linked In" icon="fa fa-lg fa-linkedin"></px-action-sheet-button>
-        </px-action-sheet>
+              <px-table-view>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+              </px-table-view>
+            </px-action-sheet>
+          </template>
+        </demo-snippet>
+      </div>
+      <div class="u-m+">
+        <h2>A modal bottom sheet with a set of actions in a grid</h2>
+        <demo-snippet>
+          <template>
+            <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">List Action Sheet
+            </button>
+            <px-action-sheet id="actionsheet2" list></px-action-sheet>
+          </template>
+        </demo-snippet>
+      </div>
+      <div class="u-m+">
+        <h2>Menu items with subtext</h2>
+        <demo-snippet>
+          <template>
+            <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">List Action Sheet
+            </button>
+            <px-action-sheet id="actionsheet2">
+              <px-table-view>
+                <px-table-row icon="fa:fa-square" modifier="tappable" title="Two-line item" body="Secondary text"></px-table-row>
+              </px-table-view>
+            </px-action-sheet>
+          </template>
+        </demo-snippet>
+      </div>
+      <div class="u-m+">
+        <h2>Action Sheet - List</h2>
+        <demo-snippet>
+          <template>
+            <button class="btn--large btn btn--tertiary btn--full" type="button" onclick="document.getElementById('actionsheet2').toggle()">List Action Sheet
+            </button>
 
-      </template>
-    </demo-snippet>
-  </div>
+            <px-action-sheet id="actionsheet2">
+              <div class="u-m--">
+                <h3>Open in</h3>
+              </div>
 
+              <px-action-sheet-button label="Github" icon="fa fa-lg fa-github"></px-action-sheet-button>
+              <px-action-sheet-button label="Facebook" icon="fa fa-lg fa-facebook"></px-action-sheet-button>
+              <px-action-sheet-button label="Twitter" icon="fa fa-lg fa-twitter"></px-action-sheet-button>
+              <px-action-sheet-button label="Linked In" icon="fa fa-lg fa-linkedin"></px-action-sheet-button>
+            </px-action-sheet>
 
+          </template>
+        </demo-snippet>
+      </div>
 
+    </div>
 
-
-
-</body>
+  </body>
 
 </html>

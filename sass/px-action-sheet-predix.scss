@@ -5,6 +5,7 @@
 /// @since 0.0.1
 ////
 /// Mixin helpers
+@import 'px-spacing-design/_trumps.spacing.scss';
 @import 'px-mobile-design/sass/_mixins.scss';
 @import 'variables';
 @mixin actionButton($bgColor) {
@@ -37,10 +38,10 @@
 
 /// The action dialog component.
 /// @example html
-/// <div class="action-dialog">
+/// <div class="c-action-dialog">
 ///		//Action Sheet Here
 ///	</div>
-.action-dialog {
+@include b ('c-action-dialog') {
   /// The overlay that is behind the action sheet.
   ///@example html
   ///	<div class="action-dialog--mask"></div>
@@ -68,7 +69,13 @@
   }
 }
 
-.action-sheet {
+///---------------------------------------------------
+/// The action sheet component.
+/// @example html
+/// <div class="c-action-sheet">
+///		//Action Sheet Here
+///	</div>
+@include b ('c-action-sheet') {
   user-select     : none;
   padding         : 0;
   border-radius   : $action-sheet-button-radius;
@@ -86,81 +93,53 @@
   background-color: $action-sheet-background-color;
   background-color: var(--px-action-sheet-background-color, $action-sheet-background-color);
   box-shadow      : $action-sheet-box-shadow;
+  @include noselect();
 
-  @include respond ('small') {
-    border-left : none;
-    border-right: none;
-  }
-
-  * {
-    -webkit-touch-callout: none;
-    -webkit-user-select  : none;
-    user-select          : none;
-  }
-
+  ///---------------------------------------------------
   @include modifier ('is-open') {
     z-index   : $action-sheet-zindex;
     transform : translateY(0);
     opacity   : 1;
     visibility: visible;
   }
-
-  @include respond ('small') {
-    left : 0;
-    right: 0;
+  @include media-breakpoint-down(sm) {
+    border-left  : none;
+    border-right : none;
+    border-bottom: none;
+    left         : 0;
+    right        : 0;
+  }
+  @include media-breakpoint-up(md) {
+    left : 20%;
+    right: 20%;
   }
 
-  @include respond ('retina') {
-    left : 0;
-    right: 0;
-  }
-
-  @include respond ('medium') {
-    left : 5%;
-    right: 5%;
-  }
-
-  @include respond ('large') {
-    left : 25%;
-    right: 25%;
-  }
-
+  ///---------------------------------------------------
   @include element ('actions') {
     display        : flex;
     flex-direction : column;
     justify-content: space-between;
+    margin         : $inuit-base-spacing-unit--tiny $inuit-base-spacing-unit--small;
 
-    > px-action-sheet-button {
-      flex  : 1;
-      margin: 0;
-
-      //@include actionButton(#fff);
-      //border-bottom: 1px solid $action-sheet-button-border-color !important;
-      &:last-child {
-        border-bottom: none !important;
-      }
-    }
-
+    ///---------------------------------------------------
     @include modifier ('grid') {
       flex-direction: row;
       flex-wrap     : wrap;
-
+      //margin-top: $inuit-base-spacing-unit--small;
+      //margin-bottom: $inuit-base-spacing-unit;
+      //margin-right: $inuit-base-spacing-unit;
+      //margin-left: $inuit-base-spacing-unit;
       px-action-sheet-button {
-        flex  : 1 0 80px;
+        flex   : 1 0 80px;
         padding: $action-sheet-button-margin;
-
         @include media-breakpoint-down (sm) {
           margin: $inuit-base-spacing-unit--tiny;
         }
       }
 
-      .action-sheet__button {
-        align-items   : center;
-        flex-direction: column;
-        flex-wrap     : wrap;
-      }
     }
 
+    ///---------------------------------------------------
     @include modifier ('list') {
       flex-direction: column !important;
       flex-wrap     : wrap;
@@ -170,7 +149,7 @@
         margin: 0;
       }
 
-      .action-sheet__button {
+      @include c ('button') {
         display       : flex;
         flex-direction: row;
         align-items   : center;
@@ -187,6 +166,7 @@
 
   }
 
+  ///---------------------------------------------------
   @include element ('button') {
     box-shadow   : none;
     border       : none;
@@ -206,13 +186,14 @@
       outline: none;
     }
 
-    .btn{
-      height: 100%;
-      width: 100%;
-      align-self: center;
-      display: flex;
+    ///---------------------------------------------------
+    @include c ('btn') {
+      height        : 100%;
+      width         : 100%;
+      align-self    : center;
+      display       : flex;
       flex-direction: column;
-      align-items: center;
+      align-items   : center;
     }
 
     &:last-of-type {}
@@ -223,6 +204,7 @@
       border-bottom: none !important;
     }
 
+    ///---------------------------------------------------
     /// The info action button styles.
     @include modifier ('info') {
       color         : $action-sheet-label-button-font-color !important;

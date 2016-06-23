@@ -1,3 +1,9 @@
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
+ */
 /*------------------------------------*    #PX-COLORS-DESIGN
 \*------------------------------------*/
 /**
@@ -39,102 +45,7 @@
 /**
      * Dark
      */
-/*
-"palm" "screen and (max-width: 44.9375em)",
-"lap" "screen and (min-width: 45em) and (max-width: 63.9375em)",
-"lap-and-up" "screen and (min-width: 45em)",
-"portable" "screen and (max-width: 63.9375em)",
-"desk" "screen and (min-width: 64em)",
-*/
-/**
- * Margin and padding helper classes. Use these to tweak layout on a micro
- * level.
- *
- * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
- */
-/**
-     * Margin helper classes.
-     *
-     * Add margins.
-     */
-.u-m {
-  margin: 1rem !important; }
-
-.u-mt {
-  margin-top: 1rem !important; }
-
-.u-mr {
-  margin-right: 1rem !important; }
-
-.u-mb {
-  margin-bottom: 1rem !important; }
-
-.u-ml {
-  margin-left: 1rem !important; }
-
-.u-mh {
-  margin-right: 1rem !important;
-  margin-left: 1rem !important; }
-
-.u-mv {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important; }
-
-/**
-     * Remove margins.
-     */
-.u-m0 {
-  margin: 0 !important; }
-
-.u-mt0 {
-  margin-top: 0 !important; }
-
-.u-mr0 {
-  margin-right: 0 !important; }
-
-.u-mb0 {
-  margin-bottom: 0 !important; }
-
-.u-ml0 {
-  margin-left: 0 !important; }
-
-.u-mh0 {
-  margin-right: 0 !important;
-  margin-left: 0 !important; }
-
-.u-mv0 {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important; }
-
-/**
-     * Padding helper classes.
-     *
-     * Add paddings.
-     */
-.u-p {
-  padding: 1rem !important; }
-
-.u-pt {
-  padding-top: 1rem !important; }
-
-.u-pr {
-  padding-right: 1rem !important; }
-
-.u-pb {
-  padding-bottom: 1rem !important; }
-
-.u-pl {
-  padding-left: 1rem !important; }
-
-.u-ph {
-  padding-right: 1rem !important;
-  padding-left: 1rem !important; }
-
-.u-pv {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important; }
-
-.action-dialog--mask {
+.c-action-dialog--mask {
   transition: all 0.3s;
   position: fixed;
   top: 0;
@@ -145,13 +56,13 @@
   z-index: -1;
   opacity: 0;
   visibility: hidden; }
-  .action-dialog--mask--is-open {
+  .c-action-dialog--mask--is-open {
     position: fixed;
     z-index: 10;
     opacity: 1;
     visibility: visible; }
 
-.action-sheet {
+.c-action-sheet {
   user-select: none;
   padding: 0;
   border-radius: 0;
@@ -166,75 +77,69 @@
   border: var(--px-action-sheet-border, none);
   background-color: white;
   background-color: var(--px-action-sheet-background-color, white);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); }
-  @media screen and (min-width: 374px) and (max-width: 425px) {
-    .action-sheet {
-      border-left: none;
-      border-right: none; } }
-  .action-sheet * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none; }
-  .action-sheet--is-open {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                 not supported by any browser */ }
+  .c-action-sheet--is-open {
     z-index: 500;
     transform: translateY(0);
     opacity: 1;
     visibility: visible; }
-  @media screen and (min-width: 374px) and (max-width: 425px) {
-    .action-sheet {
+  @media (max-width: 51.1333333333rem) {
+    .c-action-sheet {
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
       left: 0;
       right: 0; } }
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    .action-sheet {
-      left: 0;
-      right: 0; } }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .action-sheet {
-      left: 5%;
-      right: 5%; } }
-  @media screen and (min-width: 1024px) and (max-width: 1600px) {
-    .action-sheet {
-      left: 25%;
-      right: 25%; } }
-  .action-sheet__actions {
+  @media (min-width: 51.2rem) {
+    .c-action-sheet {
+      left: 20%;
+      right: 20%; } }
+  .c-action-sheet__actions {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; }
-    .action-sheet__actions > px-action-sheet-button {
-      flex: 1;
-      margin: 0; }
-      .action-sheet__actions > px-action-sheet-button:last-child {
-        border-bottom: none !important; }
-    .action-sheet__actions--grid {
+    justify-content: space-between;
+    margin: 0.3333333333rem 0.6666666667rem; }
+    .c-action-sheet__actions--grid {
       flex-direction: row;
       flex-wrap: wrap; }
-      .action-sheet__actions--grid px-action-sheet-button {
+      .c-action-sheet__actions--grid px-action-sheet-button {
         flex: 1 0 80px;
-        margin: 0.6666666667rem; }
-        @media screen and (min-width: 374px) and (max-width: 425px) {
-          .action-sheet__actions--grid px-action-sheet-button {
+        padding: 0.6666666667rem; }
+        @media (max-width: 51.1333333333rem) {
+          .c-action-sheet__actions--grid px-action-sheet-button {
             margin: 0.3333333333rem; } }
-      .action-sheet__actions--grid .action-sheet__button {
-        align-items: center;
-        flex-direction: column;
-        flex-wrap: wrap; }
-    .action-sheet__actions--list {
+    .c-action-sheet__actions--list {
       flex-direction: column !important;
       flex-wrap: wrap; }
-      .action-sheet__actions--list px-action-sheet-button {
+      .c-action-sheet__actions--list px-action-sheet-button {
         flex: 1;
         margin: 0; }
-      .action-sheet__actions--list .action-sheet__button {
+      .c-action-sheet__actions--list ::content button,
+      .c-action-sheet__actions--list button {
         display: flex;
         flex-direction: row;
         align-items: center;
         flex: 1;
         margin: 0 !important;
         text-align: left; }
-        .action-sheet__actions--list .action-sheet__button i {
+        .c-action-sheet__actions--list ::content button i,
+        .c-action-sheet__actions--list button i {
           margin-left: 0.6666666667rem;
           margin-right: 0.6666666667rem; }
-  .action-sheet__button {
+  .c-action-sheet__button {
     box-shadow: none;
     border: none;
     display: flex;
@@ -247,16 +152,37 @@
     border-radius: 0;
     padding: 0.6666666667rem;
     border-bottom: none; }
-    .action-sheet__button > * {
-      user-select: none; }
-    .action-sheet__button--danger {
+    .c-action-sheet__button > * {
+      -webkit-touch-callout: none;
+      /* iOS Safari */
+      -webkit-user-select: none;
+      /* Chrome/Safari/Opera */
+      -khtml-user-select: none;
+      /* Konqueror */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* Internet Explorer/Edge */
+      user-select: none;
+      /* Non-prefixed version, currently
+                                 not supported by any browser */
+      outline: none; }
+    .c-action-sheet__button ::content btn,
+    .c-action-sheet__button btn {
+      height: 100%;
+      width: 100%;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    .c-action-sheet__button--danger {
       color: #ff5c5c !important;
       border-bottom: none !important; }
-    .action-sheet__button--info {
+    .c-action-sheet__button--info {
       color: #525156 !important;
       pointer-events: none;
       white-space: pre-wrap;
       line-height: normal; }
-      .action-sheet__button--info:active {
+      .c-action-sheet__button--info:active {
         transition: none;
         opacity: 1; }
