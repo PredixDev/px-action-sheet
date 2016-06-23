@@ -103,6 +103,15 @@ module.exports = function (grunt) {
           logConcurrentOutput: true
         }
       }
+    },
+    'polymer-css-compiler': {
+      //Default options sent to task
+      styles: {
+        filename: '-styles',
+        files: {
+          './<%=pkg.name%>.html': ['css/<%=pkg.name%>.css']
+        }
+      }
     }
   });
 
@@ -113,13 +122,16 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-dep-serve');
   // grunt.loadNpmTasks('webdriver-support');
+  grunt.loadNpmTasks('polymer-css-compiler');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-concurrent');
 
   // Default task.
   grunt.registerTask('default', 'Basic build', [
+    'clean:css',
 		'sass',
-		'autoprefixer'
+		'autoprefixer',
+    'polymer-css-compiler'
 	]);
 
   grunt.registerTask('devmode', 'Development Mode', [

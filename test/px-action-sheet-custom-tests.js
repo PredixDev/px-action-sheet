@@ -31,7 +31,7 @@ function runCustomTests() {
     test('Dialog Mask can close action sheet.', function () {
       //element.isOpen = !element.isOpen;
       element.open = true;
-      element.$._actionDialogMask.click();
+      element.$.mask.click();
       assert(element.open === false);
     });
   });

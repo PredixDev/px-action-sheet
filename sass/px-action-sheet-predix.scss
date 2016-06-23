@@ -97,7 +97,7 @@
 
   ///---------------------------------------------------
   @include modifier ('is-open') {
-    z-index   : $action-sheet-zindex;
+    z-index   : 25;
     transform : translateY(0);
     opacity   : 1;
     visibility: visible;
@@ -115,11 +115,27 @@
   }
 
   ///---------------------------------------------------
+  ///c-action-sheet--full
+  @include m ('full') {
+    left: 0;
+    right: 0;
+  }
+  ///c-action-sheet--persistent
+  @include m ('persistent') {
+    //background-color: crimson;
+
+  }
+  ///---------------------------------------------------
+  ///c-action-sheet__actions
   @include element ('actions') {
     display        : flex;
     flex-direction : column;
     justify-content: space-between;
-    margin         : $inuit-base-spacing-unit--tiny $inuit-base-spacing-unit--small;
+    margin         : $inuit-base-spacing-unit--small $inuit-base-spacing-unit;
+
+    @include media-breakpoint-down(md) {
+      margin         : $inuit-base-spacing-unit--tiny;
+    }
 
     ///---------------------------------------------------
     @include modifier ('grid') {
@@ -136,7 +152,6 @@
           margin: $inuit-base-spacing-unit--tiny;
         }
       }
-
     }
 
     ///---------------------------------------------------

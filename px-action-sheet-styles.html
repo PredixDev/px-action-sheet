@@ -1,10 +1,7 @@
-/**
- * Margin and padding helper classes. Use these to tweak layout on a micro
- * level.
- *
- * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
- */
-/*------------------------------------*    #PX-COLORS-DESIGN
+<dom-module id="px-action-sheet-css">
+  <template>
+		<style>
+    /*------------------------------------*    #PX-COLORS-DESIGN
 \*------------------------------------*/
 /**
  * Brand Colors
@@ -45,6 +42,102 @@
 /**
      * Dark
      */
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
+ */
+.flex {
+  display: flex; }
+
+.inline--flex {
+  display: inline-flex; }
+
+.flex--row {
+  flex-direction: row; }
+
+.flex--row--rev {
+  flex-direction: row-reverse; }
+
+.flex--col {
+  flex-direction: column; }
+
+.flex--col--rev {
+  flex-direction: column-reverse; }
+
+.flex--nowrap {
+  flex-wrap: nowrap; }
+
+.flex--wrap {
+  flex-wrap: wrap; }
+
+.flex--wrap--rev {
+  flex-wrap: wrap-reverse; }
+
+.flex--left {
+  justify-content: flex-start; }
+
+.flex--center {
+  justify-content: center; }
+
+.flex--right {
+  justify-content: flex-end; }
+
+.flex--justify {
+  justify-content: space-between; }
+
+.flex--spaced {
+  justify-content: space-around; }
+
+.flex--top {
+  align-items: flex-start; }
+
+.flex--middle {
+  align-items: center; }
+
+.flex--bottom {
+  align-items: flex-end; }
+
+.flex--stretch {
+  align-items: stretch; }
+
+.flex--baseline {
+  align-items: baseline; }
+
+.flex--top--multi {
+  align-content: flex-start; }
+
+.flex--middle--multi {
+  align-content: center; }
+
+.flex--bottom--multi {
+  align-content: flex-end; }
+
+.flex--stretch--multi {
+  align-content: stretch; }
+
+.flex--justify--multi {
+  align-content: space-between; }
+
+.flex--spaced--multi {
+  align-content: space-around; }
+
+.flex__item {
+  flex: 1; }
+
+.flex__item--top {
+  align-self: flex-start; }
+
+.flex__item--middle {
+  align-self: center; }
+
+.flex__item--bottom {
+  align-self: flex-end; }
+
+.flex__item--baseline {
+  align-self: baseline; }
+
 .c-action-dialog--mask {
   transition: all 0.3s;
   position: fixed;
@@ -63,10 +156,7 @@
     visibility: visible; }
 
 .c-action-sheet {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   padding: 0;
   border-radius: 0;
   z-index: -1;
@@ -114,47 +204,34 @@
     left: 0;
     right: 0; }
   .c-action-sheet__actions {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
     margin: 0.6666666667rem 1rem; }
     @media (max-width: 68.2rem) {
       .c-action-sheet__actions {
         margin: 0.3333333333rem; } }
     .c-action-sheet__actions--grid {
-      -ms-flex-direction: row;
-          flex-direction: row;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+      flex-direction: row;
+      flex-wrap: wrap; }
       .c-action-sheet__actions--grid px-action-sheet-button {
-        -ms-flex: 1 0 80px;
-            flex: 1 0 80px;
+        flex: 1 0 80px;
         padding: 0.6666666667rem; }
         @media (max-width: 51.1333333333rem) {
           .c-action-sheet__actions--grid px-action-sheet-button {
             margin: 0.3333333333rem; } }
     .c-action-sheet__actions--list {
-      -ms-flex-direction: column !important;
-          flex-direction: column !important;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+      flex-direction: column !important;
+      flex-wrap: wrap; }
       .c-action-sheet__actions--list px-action-sheet-button {
-        -ms-flex: 1;
-            flex: 1;
+        flex: 1;
         margin: 0; }
       .c-action-sheet__actions--list ::content button,
       .c-action-sheet__actions--list button {
-        display: -ms-flexbox;
         display: flex;
-        -ms-flex-direction: row;
-            flex-direction: row;
-        -ms-flex-align: center;
-            align-items: center;
-        -ms-flex: 1;
-            flex: 1;
+        flex-direction: row;
+        align-items: center;
+        flex: 1;
         margin: 0 !important;
         text-align: left; }
         .c-action-sheet__actions--list ::content button i,
@@ -164,14 +241,10 @@
   .c-action-sheet__button {
     box-shadow: none;
     border: none;
-    display: -ms-flexbox;
     display: flex;
     text-align: center;
     outline: none;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    user-select: none;
     width: 100%;
     cursor: pointer;
     outline: none;
@@ -197,14 +270,10 @@
     .c-action-sheet__button btn {
       height: 100%;
       width: 100%;
-      -ms-flex-item-align: center;
-          align-self: center;
-      display: -ms-flexbox;
+      align-self: center;
       display: flex;
-      -ms-flex-direction: column;
-          flex-direction: column;
-      -ms-flex-align: center;
-          align-items: center; }
+      flex-direction: column;
+      align-items: center; }
     .c-action-sheet__button--danger {
       color: #ff5c5c !important;
       border-bottom: none !important; }
@@ -216,3 +285,7 @@
       .c-action-sheet__button--info:active {
         transition: none;
         opacity: 1; }
+
+    </style>
+  </template>
+</dom-module>

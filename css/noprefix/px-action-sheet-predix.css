@@ -92,7 +92,7 @@
   /* Non-prefixed version, currently
                                  not supported by any browser */ }
   .c-action-sheet--is-open {
-    z-index: 500;
+    z-index: 25;
     transform: translateY(0);
     opacity: 1;
     visibility: visible; }
@@ -107,11 +107,17 @@
     .c-action-sheet {
       left: 20%;
       right: 20%; } }
+  .c-action-sheet--full {
+    left: 0;
+    right: 0; }
   .c-action-sheet__actions {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0.3333333333rem 0.6666666667rem; }
+    margin: 0.6666666667rem 1rem; }
+    @media (max-width: 68.2rem) {
+      .c-action-sheet__actions {
+        margin: 0.3333333333rem; } }
     .c-action-sheet__actions--grid {
       flex-direction: row;
       flex-wrap: wrap; }
