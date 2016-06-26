@@ -159,7 +159,6 @@
   user-select: none;
   padding: 0;
   border-radius: 0;
-  z-index: -1;
   position: fixed;
   left: 0;
   right: 0;
@@ -181,11 +180,21 @@
   /* Firefox */
   -ms-user-select: none;
   /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
-                                 not supported by any browser */ }
+  user-select: none; }
+  .c-action-sheet.sixteen-nine {
+    position: relative; }
+    .c-action-sheet.sixteen-nine:before {
+      display: block;
+      content: '';
+      width: 100%;
+      padding-top: 56.25%; }
+    .c-action-sheet.sixteen-nine > .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
   .c-action-sheet--is-open {
-    z-index: 25;
     transform: translateY(0);
     opacity: 1;
     visibility: visible; }
@@ -263,8 +272,6 @@
       -ms-user-select: none;
       /* Internet Explorer/Edge */
       user-select: none;
-      /* Non-prefixed version, currently
-                                 not supported by any browser */
       outline: none; }
     .c-action-sheet__button ::content btn,
     .c-action-sheet__button btn {

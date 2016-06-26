@@ -10,6 +10,8 @@
  */
  -->
 <link rel="import" href="../polymer/polymer.html"/>
+
+<link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="px-action-sheet-styles.html">
 <!--
@@ -64,7 +66,7 @@ Custom property | Description | Default
         @apply(--px-action-sheet)
       }
     </style>
-    <div id="mask" class="c-action-dialog--mask"></div>
+    <div id="overlay"></div>
     <div id="sheet" class="c-action-sheet">
       <div id="actions" class="c-action-sheet__actions">
         <content></content>
@@ -74,12 +76,15 @@ Custom property | Description | Default
   <script>
     Polymer({
       is: 'px-action-sheet',
-      behaviors: [Polymer.IronResizableBehavior],
+      behaviors: [
+        Polymer.IronResizableBehavior,
+        Polymer.IronOverlayBehavior
+      ],
       properties: {
         /**
          * The current state of the action sheet
          */
-        open: {
+        isopen: {
           type: Boolean,
           observer: '_openHandler',
           value: false
@@ -95,10 +100,14 @@ Custom property | Description | Default
         }
       },
       listeners: {
-        'mask.tap': 'toggle',
+        //'mask.tap': '_toggle',
         'iron-resize': '_resizeHandler'
       },
-      attached: function () {},
+      attached: function () {
+        this.backdropElement = this.$.overlay;
+        this.alwaysOnTop = true;
+        this.withBackdrop = true;
+      },
       /**
        * Handle invoking the toggleHandler when the value changes.
        */
@@ -109,13 +118,13 @@ Custom property | Description | Default
        * Handle toggling the visibility of the action sheet.
        */
       _toggleHandler: function (show) {
-        this.toggleClass('c-action-dialog--mask--is-open', show || this.open, this.$.mask);
+        //this.toggleClass('c-action-dialog--mask--is-open', show || this.open, this.$.mask);
         this.toggleClass('c-action-sheet--is-open', show || this.open, this.$.sheet);
       },
       /**
        * Handle toggling value of open, which in turn toggles the visibility.
        */
-      toggle: function () {
+      _toggle: function () {
         this.open = !this.open;
       },
       _handleModifier: function (newVal, oldVal) {

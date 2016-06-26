@@ -69,6 +69,7 @@
   }
 }
 
+
 ///---------------------------------------------------
 /// The action sheet component.
 /// @example html
@@ -79,7 +80,7 @@
   user-select     : none;
   padding         : 0;
   border-radius   : $action-sheet-button-radius;
-  z-index         : -1;
+//z-index         : -1;
   position        : fixed;
 
   left            : 0;
@@ -93,11 +94,14 @@
   background-color: $action-sheet-background-color;
   background-color: var(--px-action-sheet-background-color, $action-sheet-background-color);
   box-shadow      : $action-sheet-box-shadow;
+  &.sixteen-nine {
+	   @include aspect-ratio(16, 9);
+  }
   @include noselect();
 
   ///---------------------------------------------------
   @include modifier ('is-open') {
-    z-index   : 25;
+    //z-index   : 25;
     transform : translateY(0);
     opacity   : 1;
     visibility: visible;
