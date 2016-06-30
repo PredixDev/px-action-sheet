@@ -103,7 +103,12 @@ Custom property | Description | Default
         //'mask.tap': '_toggle',
         'iron-resize': '_resizeHandler'
       },
-      attached: function () {
+      ready: function () {
+
+        this.horizontalAlign = 'auto';
+        this.verticalAlign = 'bottom';
+      },
+      attached: function() {
         this.backdropElement = this.$.overlay;
         this.alwaysOnTop = true;
         this.withBackdrop = true;
