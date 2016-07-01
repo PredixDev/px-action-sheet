@@ -84,10 +84,11 @@ Custom property | Description | Default
         /**
          * The current state of the action sheet
          */
-        isopen: {
+        opened: {
           type: Boolean,
-          observer: '_openHandler',
-          value: false
+          notify: true,
+          reflectToAttribute: true,
+          observer: '_openHandler'
         },
         /**
          * The modifiers to apply (`small`, `large`, `huge`, `full`, `grid`, `list` etc)
@@ -104,14 +105,14 @@ Custom property | Description | Default
         'iron-resize': '_resizeHandler'
       },
       ready: function () {
-
+        this.backdropElement = this.$.overlay;
+        this.alwaysOnTop = true;
+        this.withBackdrop = true;
         this.horizontalAlign = 'auto';
         this.verticalAlign = 'bottom';
       },
       attached: function() {
-        this.backdropElement = this.$.overlay;
-        this.alwaysOnTop = true;
-        this.withBackdrop = true;
+
       },
       /**
        * Handle invoking the toggleHandler when the value changes.
@@ -124,13 +125,14 @@ Custom property | Description | Default
        */
       _toggleHandler: function (show) {
         //this.toggleClass('c-action-dialog--mask--is-open', show || this.open, this.$.mask);
-        this.toggleClass('c-action-sheet--is-open', show || this.open, this.$.sheet);
+        this.toggleClass('c-action-sheet--is-open', show, this.$.sheet);
       },
       /**
        * Handle toggling value of open, which in turn toggles the visibility.
        */
       _toggle: function () {
         this.open = !this.open;
+        this.toggleClass('c-action-sheet--is-open', show, this.$.sheet);
       },
       _handleModifier: function (newVal, oldVal) {
         var types;
