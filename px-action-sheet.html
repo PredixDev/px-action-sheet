@@ -44,7 +44,7 @@ The following custom properties are available for styling:
 Custom property | Description | Default
 ------------ | ------------- | ------------
 `--px-action-sheet`   | Style mixin to be applied to the element | null
-`--px-action-sheet-overlay`   | Style mixin to be applied to the element | null
+`--px-action-sheet-overlay`   | Style mixin to be applied to the overlay element | null
 
 
 @element px-action-sheet.html
@@ -59,14 +59,19 @@ Custom property | Description | Default
       :host {
         display: block;
       }
+      :host([opened]){
+
+      }
       :host .c-action-dialog--mask {
-        @apply(--px-action-sheet-overlay)
+        z-index: 109;
+        @apply(--px-action-sheet-overlay);
       }
       :host .c-action-sheet {
-        @apply(--px-action-sheet)
+        z-index: 110;
+        @apply(--px-action-sheet);
       }
     </style>
-    <div id="overlay"></div>
+    <div id="overlay" class="c-action-dialog--mask"></div>
     <div id="sheet" class="c-action-sheet">
       <div id="actions" class="c-action-sheet__actions">
         <content></content>
@@ -77,8 +82,8 @@ Custom property | Description | Default
     Polymer({
       is: 'px-action-sheet',
       behaviors: [
-        Polymer.IronResizableBehavior,
-        Polymer.IronOverlayBehavior
+        Polymer.IronResizableBehavior
+        /* Not using this because cannot customize the open transition. ,Polymer.IronOverlayBehavior*/
       ],
       properties: {
         /**
@@ -101,7 +106,7 @@ Custom property | Description | Default
         }
       },
       listeners: {
-        //'mask.tap': '_toggle',
+        'overlay.tap': 'toggle',
         'iron-resize': '_resizeHandler'
       },
       ready: function () {
@@ -124,15 +129,14 @@ Custom property | Description | Default
        * Handle toggling the visibility of the action sheet.
        */
       _toggleHandler: function (show) {
-        //this.toggleClass('c-action-dialog--mask--is-open', show || this.open, this.$.mask);
-        this.toggleClass('c-action-sheet--is-open', show, this.$.sheet);
+        this.toggleClass('c-action-dialog--mask--is-open', this.opened, this.$.overlay);
+        this.toggleClass('c-action-sheet--is-open', this.opened, this.$.sheet);
       },
       /**
        * Handle toggling value of open, which in turn toggles the visibility.
        */
-      _toggle: function () {
-        this.open = !this.open;
-        this.toggleClass('c-action-sheet--is-open', show, this.$.sheet);
+      toggle: function () {
+        this.opened = !this.opened;
       },
       _handleModifier: function (newVal, oldVal) {
         var types;
