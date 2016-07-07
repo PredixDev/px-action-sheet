@@ -4,7 +4,6 @@ function runCustomTests() {
 
   // This is the placeholder suite to place custom tests in
   // Use testCase(options) for a more convenient setup of the test cases
-  suite('Custom Automation Tests for px-action-sheet', function () {});
   suite('<px-action-sheet>', function () {
     var element = document.getElementById('px_action_sheet_1');
 
@@ -14,25 +13,25 @@ function runCustomTests() {
 
     test('can toggle - open', function () {
       element.toggle();
-      assert(element.open === true);
+      assert(element.opened === true);
     });
 
     test('can toggle - close', function () {
       element.toggle();
-      assert(element.open === false);
+      assert(element.opened === false);
     });
 
     test('can toggle - isOpen', function () {
-      var state = element.open;
-      element.open = !state;
-      assert(element.open === true);
+      var state = element.opened;
+      element.opened = !state;
+      assert(element.opened === true);
     });
 
     test('Dialog Mask can close action sheet.', function () {
       //element.isOpen = !element.isOpen;
-      element.open = true;
-      element.$.mask.click();
-      assert(element.open === false);
+      element.opened = true;
+      element.$.overlay.click();
+      assert(element.opened === false);
     });
   });
-};
+}
