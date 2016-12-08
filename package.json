@@ -8,10 +8,6 @@
     ],
     "license": "ISC",
     "author": "Jonnie Spratley",
-    "scripts": {
-        "postinstall": "bower install",
-        "test": "grunt test"
-    },
     "devDependencies": {
         "bower": "*",
         "grunt": "~v0.4.5",
